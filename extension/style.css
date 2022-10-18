@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(75, 112, 168);
+    text-align:center;
+    width:300px;
+    height: 100px;
+}
+
+h1.title {
+    color: rgb(228, 235, 236);
+}
+
+button {
+    width:100%;
+    color:white;
+    background:linear-gradient(#01a9e1, #5bc4bc);
+    border-width:0px;
+    border-radius:20px;
+    padding:5px;
+    font-weight: bold;
+    cursor:pointer;
+}
