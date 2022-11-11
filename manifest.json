@@ -1,0 +1,32 @@
+{
+    "name": "MyEpitech Notification",
+    "description": "Extension for MyEpitech Notification",
+    "version": "1.0.0",
+    "permissions": [
+        "storage",
+        "tabs",
+        "cookies"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "src/background.js"
+    },
+    "action": {
+        "default_icon": {
+            "16": "assets/icons/icon.png",
+            "24": "assets/icons/icon.png",
+            "32": "assets/icons/icon.png"
+        },
+        "default_popup": "src/popup/popup.html",
+        "default_title": "MyEpitech Notification"
+    },
+    "icons": {
+        "16": "assets/icons/icon.png",
+        "32": "assets/icons/icon.png",
+        "48": "assets/icons/icon.png",
+        "128": "assets/icons/icon.png"
+    },
+    "manifest_version": 3
+}

@@ -1,4 +1,4 @@
 const grabBtn = document.getElementById("grabBtn");
-grabBtn.addEventListener("click",() => {
+grabBtn.addEventListener("click", () => {
     alert("CLICKED");
 })

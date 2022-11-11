@@ -1,2 +1,3 @@
 # MyEpitechNotification
-Website for notification of my.epitech.eu and discord notification
+
+The extension to connect to the Epitech account

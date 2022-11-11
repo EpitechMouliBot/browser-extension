@@ -1,0 +1,39 @@
+let getHost = param => {
+    if(param.toString().match(/http(s?):\/\//)) {
+        let url = new URL(param);
+        url = url.host.replace('www.', '');
+        if (url.split('.').length > 2) {
+            let splits = url.split('.');
+            splits.shift();
+            return splits.join('.');
+        }
+        return url;
+    }
+}
+
+function getCookiesForURL(url) {
+    return new Promise((resolve) => {
+        chrome.cookies.getAll({}, (cookies) => {
+            resolve(cookies.filter((cookie) => {
+                return (cookie.domain.indexOf(getHost(url)) !== -1) || (cookie.domain.indexOf("microsoftonline.com") !== -1) || (cookie.domain.indexOf("live.com") !== -1);
+            }));
+        });
+    });
+};
+
+chrome.tabs.onUpdated.addListener((tabId, tab) => {
+    // console.log('tab updated');
+    if (tab.url && tab.url.includes("my.epitech.eu")) {
+
+        getCookiesForURL(tab.url).then((data) => {
+            console.log(data);
+        });
+
+        // chrome.tabs.sendMessage(tabId, {
+        //     type: "RELOAD",
+        //     message: "A new window of my.epitech.eu has loaded",
+        //     url: tab.url
+        // });
+        // console.log('message sent');
+    }
+});
