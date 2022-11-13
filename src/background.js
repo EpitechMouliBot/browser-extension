@@ -1,5 +1,5 @@
 let getHost = param => {
-    if(param.toString().match(/http(s?):\/\//)) {
+    if (param.toString().match(/http(s?):\/\//)) {
         let url = new URL(param);
         url = url.host.replace('www.', '');
         if (url.split('.').length > 2) {
@@ -21,13 +21,27 @@ function getCookiesForURL(url) {
     });
 };
 
+chrome.runtime.onMessage.addListener((obj, sender, response) => {
+    const { type, url } = obj;
+
+    console.log('message of type: ' + type + ' recieved:\n\turl: ' + url);
+    if (type === "GET_COOKIES") {
+        getCookiesForURL(url).then((data) => {
+            console.log("Cookies from background:");
+            console.log(data);
+            response({ response: data });
+        });
+        return true;
+    }
+});
+
 chrome.tabs.onUpdated.addListener((tabId, tab) => {
     // console.log('tab updated');
     if (tab.url && tab.url.includes("my.epitech.eu")) {
 
-        getCookiesForURL(tab.url).then((data) => {
-            console.log(data);
-        });
+        // getCookiesForURL(tab.url).then((data) => {
+        //     console.log(data);
+        // });
 
         // chrome.tabs.sendMessage(tabId, {
         //     type: "RELOAD",
