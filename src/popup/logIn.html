@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="module" src="./logIn.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Home</title>
+</head>
+<body>
+    <h1 id="main-title">MyEpitechNotification</h1>
+    <div id="container">
+        <h2 class="title">Log in</h2>
+        <a href="./popup.html" class="button previous">&#8249;</a>
+        <form id="logInForm" action="" method="post">
+            <p id="errorMessage" class="hidden"></p>
+            <input type="email" name="email" id="emailInput" placeholder="Email">
+            <input type="password" name="password" id="passwordInput" placeholder="Password">
+            <input type="submit" value="Sign in" id="submitBtn" disabled="true">
+        </form>
+        <button id="noAccount">Don't have an account?</button>
+    </div>
+</body>
+</html>
