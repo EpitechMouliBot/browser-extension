@@ -1,4 +1,4 @@
-import { setErrorMessage } from "./utils.js"
+import { setErrorMessage, initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
 
 function checkAllInputs() {
     let emailInput = document.getElementById("emailInput").value;
@@ -25,13 +25,21 @@ function submitForm(form) {
     const email = data.email;
     const password = data.password;
 
-    console.log(email);
-    console.log(password);
-
-    console.log("Log in form ok");
-    //TODO requete API get login
-    //TODO si requete a marché, stocker token dans local storage et changer de page
-    // window.location.href = "./home.html";
+    let request = initRequest("POST", `http://127.0.0.1:3000/login`, {
+        "email": email,
+        "password": password // TODO encrypter password
+    });
+    request.onload = () => {
+        if (request.status === 201) {
+            localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
+            localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
+            window.location.href = "./home.html";
+        } else {
+            let messageRes = `Error ${request.status} when sending request: ${request.responseText}`;
+            console.log(messageRes);
+            alert(messageRes);
+        }
+    };
     return true;
 }
 

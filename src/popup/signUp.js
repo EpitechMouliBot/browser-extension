@@ -1,4 +1,4 @@
-import { setErrorMessage } from "./utils.js"
+import { setErrorMessage, getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
 
 function checkEmail(email) {
     // return true;
@@ -45,7 +45,7 @@ function enableDisableSubmitBtn() {
     submitBtn.disabled = checkAllInputs();
 }
 
-function submitForm(form) {
+async function submitForm(form) {
     if (form.preventDefault)
         form.preventDefault();
     const formData = new FormData(form.target);
@@ -54,17 +54,32 @@ function submitForm(form) {
     const password = data.password;
     const confirmPassword = data.confirmpassword;
 
-    console.log(email);
-    console.log(password);
-    console.log(confirmPassword);
-
     if (!checkEmail(email) || !checkPassword(password) || !checkPasswordMatch(password, confirmPassword))
         throw new Error("Checks failed");
 
-    console.log("Sign up form ok");
-    //TODO requete API signup
-    //TODO si requete a marché, stocker token dans local storage et changer de page
-    // window.location.href = "./home.html";
+    const activeTab = await getCurrentTab();
+
+    getCookies(activeTab.url).then((cookiesData) => {
+        let request = initRequest("POST", `http://127.0.0.1:3000/register`, {
+            "email": email,
+            "password": password, // TODO encrypter password et cookies
+            "cookies": JSON.stringify(cookiesData)
+        });
+        request.onload = () => {
+            if (request.status === 201) {
+                localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
+                localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
+                alert("Account created");
+                window.location.href = "./home.html";
+            } else {
+                let messageRes = `Error ${request.status} when sending request: ${request.responseText}`;
+                console.log(messageRes);
+                alert(messageRes);
+            }
+        };
+    }).catch((error) => {
+        alert("Unable to load cookies");
+    });
     return true;
 }
 

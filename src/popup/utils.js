@@ -1,3 +1,7 @@
+export let localStorageTokenName = "mouliBotAccountToken";
+export let localStorageIdName = "mouliBotAccountId";
+export let mouliBotApiUrl = "http://127.0.0.1:3000";
+
 export function setErrorMessage(visible, text) {
     let errorMessage = document.getElementById("errorMessage");
 
@@ -16,17 +20,25 @@ export async function getCurrentTab() {
 }
 
 export function getCookies(activeTabUrl) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         chrome.runtime.sendMessage({
             type: "GET_COOKIES",
             url: activeTabUrl
         }).then((response) => {
-            // console.log("Cookies from popup: ");
-            // console.log(response.response);
             resolve(response.response);
         }).catch((error) => {
             console.error(`Error when sending message: ${error}`);
-            throw error;
+            reject(error);
         });
     })
+}
+
+export function initRequest(method, url, body = {}, bearerToken = undefined) {
+    let request = new XMLHttpRequest();
+    request.open(method, url);
+    if (bearerToken)
+        request.setRequestHeader("Authorization", "Bearer " + bearerToken);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(JSON.stringify(body));
+    return request;
 }
