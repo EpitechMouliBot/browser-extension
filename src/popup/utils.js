@@ -1,6 +1,6 @@
-export let localStorageTokenName = "mouliBotAccountToken";
-export let localStorageIdName = "mouliBotAccountId";
-export let mouliBotApiUrl = "http://127.0.0.1:3000";
+export const localStorageTokenName = "mouliBotAccountToken";
+export const localStorageIdName = "mouliBotAccountId";
+export const mouliBotApiUrl = "http://127.0.0.1:3000";
 
 export function setErrorMessage(visible, text) {
     let errorMessage = document.getElementById("errorMessage");
