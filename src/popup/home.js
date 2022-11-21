@@ -12,8 +12,8 @@ function addTableElement(key, value) {
     let tdElem1 = document.createElement("td");
     let tdElem2 = document.createElement("td");
 
-    tdElem1.innerHTML = key;
-    tdElem2.innerHTML = value;
+    tdElem1.innerText = key;
+    tdElem2.innerText = value;
 
     trElem.appendChild(tdElem1);
     trElem.appendChild(tdElem2);

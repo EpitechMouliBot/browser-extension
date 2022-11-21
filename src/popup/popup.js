@@ -1,4 +1,4 @@
-import { initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl, getCurrentTab, getCookies } from "./utils.js"
+import { initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl, getCurrentTab } from "./utils.js"
 
 function checkValidToken() {
     let token = localStorage.getItem(localStorageTokenName);
@@ -18,13 +18,7 @@ function checkValidToken() {
 window.onload = async () => {
     const activeTab = await getCurrentTab();
 
-    //** quand l'onglet a changé
-    // document.addEventListener("DOMContentLoaded", async () => {
-    //     const activeTab = await getCurrentTab();
-    //     console.log("DOMContentLoaded");
-    // });
-
-    if (!(activeTab.url.includes("https://my.epitech.eu"))) {
+    if (!activeTab.url.includes("https://my.epitech.eu")) {
         const container = document.getElementById("container");
         container.innerHTML = '<h2 class="title">Please go on my.epitech.eu</h2>';
     } else {

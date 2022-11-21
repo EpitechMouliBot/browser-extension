@@ -2,6 +2,14 @@ export const localStorageTokenName = "mouliBotAccountToken";
 export const localStorageIdName = "mouliBotAccountId";
 export const mouliBotApiUrl = "http://127.0.0.1:3000";
 
+function sanitizeInput(input) {
+    return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}
+
+export function getValueFromInput(id) {
+    return sanitizeInput(document.getElementById(id).value);
+}
+
 export function setErrorMessage(visible, text) {
     let errorMessage = document.getElementById("errorMessage");
 

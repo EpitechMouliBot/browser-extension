@@ -1,11 +1,11 @@
-import { setErrorMessage, initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
+import { setErrorMessage, initRequest, localStorageIdName, localStorageTokenName, getValueFromInput } from "./utils.js"
 
 function checkAllInputs() {
-    let emailInput = document.getElementById("emailInput").value;
-    let passwordInput = document.getElementById("passwordInput").value;
+    let emailInput = getValueFromInput("emailInput");
+    let passwordInput = getValueFromInput("passwordInput");
 
     if (emailInput === "" || passwordInput === "") {
-        // setErrorMessage(false, "");
+        setErrorMessage(false, "");
         return true;
     }
     setErrorMessage(false, "");

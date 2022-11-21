@@ -1,4 +1,4 @@
-let getHost = param => {
+function getHost (param) {
     if (param.toString().match(/http(s?):\/\//)) {
         let url = new URL(param);
         url = url.host.replace('www.', '');
@@ -36,18 +36,6 @@ chrome.runtime.onMessage.addListener((obj, sender, response) => {
 });
 
 chrome.tabs.onUpdated.addListener((tabId, tab) => {
-    // console.log('tab updated');
     if (tab.url && tab.url.includes("my.epitech.eu")) {
-
-        // getCookiesForURL(tab.url).then((data) => {
-        //     console.log(data);
-        // });
-
-        // chrome.tabs.sendMessage(tabId, {
-        //     type: "RELOAD",
-        //     message: "A new window of my.epitech.eu has loaded",
-        //     url: tab.url
-        // });
-        // console.log('message sent');
     }
 });

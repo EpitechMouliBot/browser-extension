@@ -1,4 +1,4 @@
-import { setErrorMessage, getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
+import { setErrorMessage, getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName, getValueFromInput } from "./utils.js"
 
 function checkEmail(email) {
     // return true;
@@ -16,9 +16,9 @@ function checkPasswordMatch(password, confirmPassword) {
 }
 
 function checkAllInputs() {
-    let emailInput = document.getElementById("emailInput").value;
-    let passwordInput = document.getElementById("passwordInput").value;
-    let confirmPasswordInput = document.getElementById("confirmPasswordInput").value;
+    let emailInput = getValueFromInput("emailInput");
+    let passwordInput = getValueFromInput("passwordInput");
+    let confirmPasswordInput = getValueFromInput("confirmPasswordInput");
 
     if (emailInput === "" || passwordInput === "" || confirmPasswordInput === "") {
         setErrorMessage(false, "");
