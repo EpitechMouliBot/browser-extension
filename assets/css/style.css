@@ -1,12 +1,66 @@
 body {
-    /* text-align: center; */
     width: 500px;
     height: 370px;
-    /* overflow: hidden; */
     background-size: 100%;
     background-color: transparent;
     background-repeat: no-repeat;
-    background-image:url("../../assets/image/background/background_general.jpg");
+}
+
+#backgroundPopup {
+    background-image:url("../../assets/image/background/background_wrong_website.jpg");
+}
+
+#backgroundLogin {
+    background-image:url("../../assets/image/background/background_login.jpg");
+}
+
+#submitBtn {
+	background-color:#0049ff;
+	border-radius:11px;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:3px 30px;
+	text-decoration:none;
+
+    position: absolute;
+    left: 67%;
+    top: 76%;
+}
+
+#emailInput {
+    width: 64.7%;
+    position: absolute;
+    left: 6.7%;
+    top: 53.8%;
+}
+
+#passwordInput {
+    width: 64.7%;
+    position: absolute;
+    left: 6.7%;
+    top: 64.8%;
+}
+
+.buttonInput {
+    background: transparent;
+    border: none;
+	border-radius:11px;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:16px;
+	padding:7px 42px;
+}
+
+#noAccount {
+    font-size: 14px;
+    color: #0049ff;
+
+    position: absolute;
+    left: 0%;
+    top: 76%;
 }
 
 /* #main-title {

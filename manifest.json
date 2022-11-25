@@ -19,7 +19,7 @@
             "24": "assets/icons/icon.png",
             "32": "assets/icons/icon.png"
         },
-        "default_popup": "src/popup/logIn.html",
+        "default_popup": "src/popup/popup.html",
         "default_title": "MyEpitech Notification"
     },
     "icons": {
