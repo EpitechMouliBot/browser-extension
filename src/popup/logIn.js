@@ -1,4 +1,19 @@
-import { setErrorMessage, initRequest, localStorageIdName, localStorageTokenName, getValueFromInput } from "./utils.js"
+import { setErrorMessage, initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl, getCurrentTab, getValueFromInput } from "./utils.js"
+
+function checkValidToken() {
+    let token = localStorage.getItem(localStorageTokenName);
+    let id = localStorage.getItem(localStorageIdName);
+    if (token && id) {
+        let request = initRequest("GET", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
+        request.onload = () => {
+            if (request.status === 200) {
+                window.location.href = "./home.html";
+            } else {
+                console.log(`Error ${request.status}: ${request.responseText}`);
+            }
+        };
+    }
+}
 
 function checkAllInputs() {
     let emailInput = getValueFromInput("emailInput");
@@ -43,15 +58,22 @@ function submitForm(form) {
     return true;
 }
 
-window.onload = () => {
-    document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("noAccount").addEventListener("click", () => {window.location.href = './signUp.html'});
-
-    let form = document.getElementById('logInForm');
-    if (form.attachEvent) {
-        form.attachEvent("submit", submitForm);
+window.onload = async () => {
+    const activeTab = await getCurrentTab();
+    console.log(activeTab, activeTab.url.includes("https://my.epitech.eu"));
+    if (!activeTab.url.includes("https://my.epitech.eu")) {
+        document.getElementById('bodyID').style.backgroundImage="url(../../assets/image/background/background_wrong_website.jpg)";
     } else {
-        form.addEventListener("submit", submitForm);
+        // checkValidToken();
+        // document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
+        // document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
+        // document.getElementById("noAccount").addEventListener("click", () => {window.location.href = './signUp.html'});
+
+        // let form = document.getElementById('logInForm');
+        // if (form.attachEvent) {
+        //     form.attachEvent("submit", submitForm);
+        // } else {
+        //     form.addEventListener("submit", submitForm);
+        // }
     }
 }

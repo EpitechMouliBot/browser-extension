@@ -3,7 +3,7 @@ import { localStorageIdName, localStorageTokenName, initRequest, mouliBotApiUrl 
 function logOut() {
     localStorage.removeItem(localStorageIdName);
     localStorage.removeItem(localStorageTokenName);
-    window.location.href = "./popup.html";
+    // window.location.href = "./popup.html";
 }
 
 function addTableElement(key, value) {
