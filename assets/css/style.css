@@ -1,12 +1,24 @@
 body {
-    background-color: rgb(75, 112, 168);
     /* text-align: center; */
-    width: 300px;
-    height: 100px;
+    width: 500px;
+    height: 370px;
+    /* overflow: hidden; */
+    background-size: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image:url("../../assets/image/background/background_general.jpg");
 }
 
-#main-title {
-    color: rgb(228, 235, 236);
+/* #main-title {
+    color: rgb(14, 187, 144);
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 
 .visible {
@@ -67,4 +79,4 @@ a.previous {
 a.next {
     background-color: #04AA6D;
     color: white;
-}
+} */
