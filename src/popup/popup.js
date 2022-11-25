@@ -21,7 +21,7 @@ window.onload = async () => {
     if (!activeTab.url.includes("https://my.epitech.eu")) {
         // document.getElementById('backgroundBody').style.backgroundImage="url(../../assets/image/background/background_wrong_website.jpg)";
     } else {
-        window.location.href = './logIn.html';
+        window.location.href = './SignIn.html';
         checkValidToken();
     }
 }

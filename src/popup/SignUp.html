@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="module" src="./signUp.js"></script>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/buttons.css">
+    <title>Sign up</title>
+</head>
+<body id="backgroundSignup">
+    <!-- <h1>MyEpitechNotification1</h1> -->
+    <div id="container">
+        <!-- <h2 class="title">Sign in</h2> -->
+        <!-- <a href="./popup.html" class="button previous">&#8249;</a> -->
+        <form id="signUpForm" action="#" method="post">
+            <p id="errorMessage" class="hidden"></p>
+            <input type="email" name="email" id="emailInput" class="buttonInput" placeholder="Email">
+            <input type="password" name="password" id="passwordInput" class="buttonInputSignUp" placeholder="Password">
+            <input type="password" name="confirmpassword" id="confirmPasswordInput" class="buttonInput" placeholder="Confirm password">
+            <input type="submit" value="Sign up" id="submitBtn" disabled="true">
+        </form>
+        <button id="haveAccount" class="buttonInput">Already have an account ? Sign in !</button>
+    </div>
+</body>
+</html>

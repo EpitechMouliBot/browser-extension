@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script type="module" src="./logIn.js"></script>
+    <script type="module" src="./signIn.js"></script>
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <title>Home</title>
+    <link rel="stylesheet" href="../../assets/css/buttons.css">
+    <title>Sign in</title>
 </head>
-<body id="backgroundLogin">
+<body id="backgroundSignIn">
     <!-- <h1 id="main-title">MyEpitechNotification</h1> -->
     <div id="container">
-        <!-- <h2 class="title">Log in</h2> -->
+        <!-- <h2 class="title">Sign in</h2> -->
         <!-- <a href="./popup.html" class="button previous">&#8249;</a> -->
-        <form id="logInForm" action="" method="post">
+        <form id="SignInForm" action="" method="post">
             <p id="errorMessage" class="hidden"></p>
             <input type="email" name="email" id="emailInput" class="buttonInput" placeholder="Email">
             <input type="password" name="password" id="passwordInput" class="buttonInput" placeholder="Password">
-            <input type="submit" value="login" id="submitBtn" disabled="true">
+            <input type="submit" value="Sign in" id="submitBtn" disabled="true">
         </form>
         <button id="noAccount" class="buttonInput">Don't have an account ? Sign up !</button>
     </div>

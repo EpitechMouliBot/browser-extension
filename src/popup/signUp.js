@@ -87,7 +87,7 @@ window.onload = () => {
     document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
     document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
     document.getElementById("confirmPasswordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("haveAccount").addEventListener("click", () => {window.location.href = './logIn.html'});
+    document.getElementById("haveAccount").addEventListener("click", () => {window.location.href = './SignIn.html'});
 
     let form = document.getElementById('signUpForm');
     if (form.attachEvent) {

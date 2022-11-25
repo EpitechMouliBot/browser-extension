@@ -33,8 +33,10 @@ function submitForm(form) {
         if (request.status === 201) {
             localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
             localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
+            alert("Account found");
             window.location.href = "./home.html";
         } else {
+            alert("Bad authentification");
             let messageRes = `Error ${request.status} when sending request: ${request.responseText}`;
             console.log(messageRes);
             alert(messageRes);
@@ -46,9 +48,9 @@ function submitForm(form) {
 window.onload = () => {
     document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
     document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("noAccount").addEventListener("click", () => {window.location.href = './signUp.html'});
+    document.getElementById("noAccount").addEventListener("click", () => {window.location.href = './SignUp.html'});
 
-    let form = document.getElementById('logInForm');
+    let form = document.getElementById('SignInForm');
     if (form.attachEvent) {
         form.attachEvent("submit", submitForm);
     } else {
