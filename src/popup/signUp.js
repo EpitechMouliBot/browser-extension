@@ -19,8 +19,9 @@ function checkAllInputs() {
     let emailInput = getValueFromInput("emailInput");
     let passwordInput = getValueFromInput("passwordInput");
     let confirmPasswordInput = getValueFromInput("confirmPasswordInput");
+    let cguInput = document.getElementById('acceptCGU');
 
-    if (emailInput === "" || passwordInput === "" || confirmPasswordInput === "") {
+    if (emailInput === "" || passwordInput === "" || confirmPasswordInput === "" /*|| !cguInput.checked*/) {
         setErrorMessage(false, "");
         return true;
     }
@@ -34,6 +35,10 @@ function checkAllInputs() {
     }
     if (!checkPasswordMatch(passwordInput, confirmPasswordInput)) {
         setErrorMessage(true, "Passwords must match");
+        return true;
+    }
+    if (!cguInput.checked) {
+        setErrorMessage(true, "CGU not accepted");
         return true;
     }
     setErrorMessage(false, "");
@@ -87,6 +92,7 @@ window.onload = () => {
     document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
     document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
     document.getElementById("confirmPasswordInput").addEventListener("keyup", enableDisableSubmitBtn);
+    document.getElementById("acceptCGU").addEventListener("keyup", enableDisableSubmitBtn);
     document.getElementById("haveAccount").addEventListener("click", () => {window.location.href = './SignIn.html'});
 
     let form = document.getElementById('signUpForm');
