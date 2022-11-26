@@ -18,6 +18,10 @@ body {
     background-image:url("../../assets/image/background/background_signup.jpg");
 }
 
+#backgroundHome {
+    background-image:url("../../assets/image/background/background_home.jpg");
+}
+
 /* #main-title {
     color: rgb(14, 187, 144);
 }

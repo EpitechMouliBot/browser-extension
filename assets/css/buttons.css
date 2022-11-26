@@ -14,6 +14,30 @@
     top: 76%;
 }
 
+#submitBtn:hover {
+	background: linear-gradient(to top left, #0049ff 0%, #0079ff 100%);
+}
+
+#submitBtn:active {
+	top:76.2%;
+}
+
+#logOutBtn {
+    background-color:#0049ff;
+	border-radius:11px;
+	cursor:pointer;
+	color:#ffffff;
+	padding:3px 26px;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+
+    position: absolute;
+    left: 64%;
+    top: 88%;
+}
+
 #emailInput {
     width: 64.7%;
     position: absolute;
