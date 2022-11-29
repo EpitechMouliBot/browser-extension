@@ -6,26 +6,25 @@
 body {
     width: 500px;
     height: 370px;
-    /* background-size: 100%; */
     background-color: transparent;
     background-repeat: no-repeat;
 }
 
 #backgroundPopup {
-    background-image:url("../../assets/image/background/background_wrong_website.jpg");
+    background-image:url("../image/background/background_wrong_website.jpg");
 }
 
 #backgroundSignIn {
-    background-image:url("../../assets/image/background/background_signin.jpg");
+    background-image:url("../image/background/background_signin.jpg");
 }
 
 #backgroundSignup {
-    background-image:url("../../assets/image/background/background_signup.jpg");
+    background-image:url("../image/background/background_signup.jpg");
 
 }
 
 #backgroundHome {
-    background-image:url("../../assets/image/background/background_home.jpg");
+    background-image:url("../image/background/my_account/background_myacc_void.jpg");
 }
 
 /* #main-title {
