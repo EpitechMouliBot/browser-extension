@@ -18,7 +18,7 @@
 }
 
 #submitBtn:active {
-	top:76.2%;
+	top:80.4%;
 }
 
 #logOutBtn {
@@ -38,19 +38,11 @@
 }
 
 #emailInput {
-    width: 64.7%;
+    width: 63%;
     position: absolute;
-    left: 6.7%;
-    top: 53.8%;
-}
-
-.checkboxAcceptCGU {
-    color: #0049ff;
-	font-family:Arial;
-	font-size:13px;
-    position: absolute;
-    left: 7.2%;
-    top: 81.4%;
+    left: 8%;
+    top: 54.4%;
+    outline: none;
 }
 
 .buttonInput {
@@ -83,16 +75,16 @@
     top: 76%;
 }
 
-
 #passwordInput {
-    width: 64.7%;
+    width: 63%;
     position: absolute;
-    left: 6.7%;
-    top: 64.8%;
+    left: 8%;
+    top: 66%;
+    outline: none;
 }
 
 #passwordInput.buttonInputSignUp {
-    width: 24%;
+    width: 22.4%;
     background: transparent;
     border: none;
 	border-radius:11px;
@@ -103,9 +95,21 @@
 }
 
 #confirmPasswordInput {
-    width: 25%;
+    width: 22.4%;
     position: absolute;
-    left: 46.5%;
-    top: 64.8%;
+    left: 48.4%;
+    top: 66%;
 }
 
+#confirmPasswordInput::placeholder {
+    width: max-content;
+}
+
+.checkboxAcceptCGU {
+    color: #0049ff;
+	font-family:Arial;
+	font-size:13px;
+    position: absolute;
+    left: 7.2%;
+    top: 81.4%;
+}

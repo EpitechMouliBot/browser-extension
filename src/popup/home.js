@@ -31,7 +31,7 @@ window.onload = () => {
             if (request.status === 200) {
                 const resBody = JSON.parse(request.response);
                 addTableElement("Email", resBody.email);
-                addTableElement("Discord server id", resBody.server_id);
+                addTableElement("Discord server id", resBody.user_id);
                 addTableElement("Discord channel id", resBody.channel_id);
                 addTableElement("Notif status", resBody.cookies_status);
                 const date = new Date(resBody.created_at);
