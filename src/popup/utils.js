@@ -41,6 +41,17 @@ export function getCookies(activeTabUrl) {
     })
 }
 
+export async function makeGetRequest(url, token) {
+    const options = {
+        method: 'GET',
+        headers: {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }};
+    return fetch(url, options).then((response) => response)
+}
+
+
 export function initRequest(method, url, body = {}, bearerToken = undefined) {
     let request = new XMLHttpRequest();
     request.open(method, url);

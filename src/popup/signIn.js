@@ -27,7 +27,7 @@ function submitForm(form) {
 
     let request = initRequest("POST", `http://127.0.0.1:3000/login`, {
         "email": email,
-        "password": password // TODO encrypter password
+        "password": password
     });
     request.onload = () => {
         if (request.status === 201) {
