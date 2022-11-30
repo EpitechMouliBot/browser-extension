@@ -6,16 +6,9 @@ function logOut() {
     window.location.href = "./popup.html";
 }
 
-function addTableElement(key, value) {
-    let table = document.getElementById("account-infos-tbody");
-    let trElem = document.createElement("tr");
-    let tdElem1 = document.createElement("td");
-    let tdElem2 = document.createElement("td");
-    tdElem1.innerText = key;
-    tdElem2.innerText = value;
-    trElem.appendChild(tdElem1);
-    trElem.appendChild(tdElem2);
-    table.appendChild(trElem);
+function setDivText(className, value) {
+    let elem = document.getElementById(className);
+    elem.textContent = value;
 }
 
 function adaptiveBackground(cookies_status) {
@@ -49,13 +42,13 @@ window.onload = () => {
         request.onload = () => {
             if (request.status === 200) {
                 const resBody = JSON.parse(request.response);
+                console.log("rsp: ", resBody);
                 adaptiveBackground(resBody.cookies_status);
-                addTableElement("Email", resBody.email);
-                addTableElement("Discord server id", resBody.user_id);
-                addTableElement("Discord channel id", resBody.channel_id);
-                addTableElement("Notif status", resBody.cookies_status);
+                setDivText('caseEmail', resBody.email);
+                setDivText('caseDiscordID', resBody.channel_id);
                 const date = new Date(resBody.created_at);
-                addTableElement("Date", date.toLocaleDateString("fr"));
+                setDivText('caseDateAccount', date.toLocaleDateString("fr"));
+                setDivText('caseDiscordStatus', resBody.discord_status === 1 ? 'Active' : 'Disable');
             } else {
                 console.log(`Error ${request.status}: ${request.responseText}`);
             }

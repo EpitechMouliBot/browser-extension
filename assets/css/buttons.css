@@ -21,22 +21,6 @@
 	top:80.4%;
 }
 
-#logOutBtn {
-    background-color:#0049ff;
-	border-radius:11px;
-	cursor:pointer;
-	color:#ffffff;
-	padding:3px 26px;
-	font-family:Arial;
-	font-size:16px;
-	font-weight:bold;
-	text-decoration:none;
-
-    position: absolute;
-    left: 64%;
-    top: 88%;
-}
-
 #emailInput {
     width: 63%;
     position: absolute;
