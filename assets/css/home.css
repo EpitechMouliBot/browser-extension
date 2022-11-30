@@ -3,3 +3,16 @@
 	src: url('../../assets/fonts/SFPRODISPLAYBOLD.otf') format('otf'); */
     /* font-size: 10px; */
 /* } */
+
+#cookiesStatusImg {
+    position: absolute;
+    left: 38.6%;
+    top: 88.6%;
+}
+
+#conteneur
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+}

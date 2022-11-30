@@ -3,7 +3,7 @@ import { localStorageIdName, localStorageTokenName, initRequest, mouliBotApiUrl 
 function logOut() {
     localStorage.removeItem(localStorageIdName);
     localStorage.removeItem(localStorageTokenName);
-    // window.location.href = "./popup.html";
+    window.location.href = "./popup.html";
 }
 
 function addTableElement(key, value) {
@@ -11,10 +11,8 @@ function addTableElement(key, value) {
     let trElem = document.createElement("tr");
     let tdElem1 = document.createElement("td");
     let tdElem2 = document.createElement("td");
-
     tdElem1.innerText = key;
     tdElem2.innerText = value;
-
     trElem.appendChild(tdElem1);
     trElem.appendChild(tdElem2);
     table.appendChild(trElem);
@@ -24,23 +22,26 @@ function adaptiveBackground(cookies_status) {
     const basePath = '../../assets/image/background/my_account/';
     switch (cookies_status) {
         case 'new':
-            document.body.style.backgroundImage = `url('${basePath}background_myacc_orange.jpg')`;
+            document.getElementById("cookiesStatusImg").src = `${basePath}cookies_status_orange.jpg`;
+            document.getElementById("cookiesStatusImg").title = 'Waiting for your cookies to be activated';
             break;
         case 'wait':
-            document.body.style.backgroundImage = `url('${basePath}background_myacc_orange.jpg')`;
+            document.getElementById("cookiesStatusImg").src = `${basePath}cookies_status_orange.jpg`;
+            document.getElementById("cookiesStatusImg").title = 'Waiting for your cookies to be verified';
             break;
         case 'ok':
-            document.body.style.backgroundImage = `url('${basePath}background_myacc_green.jpg')`;
+            document.getElementById("cookiesStatusImg").src = `${basePath}cookies_status_green.jpg`;
+            document.getElementById("cookiesStatusImg").title = 'Your cookies are good';
             break;
         default:
-            document.body.style.backgroundImage = `url('${basePath}background_myacc_red.jpg')`;
+            document.getElementById("cookiesStatusImg").src = `${basePath}cookies_status_red.jpg`;
+            document.getElementById("cookiesStatusImg").title = 'Your cookies are expired, please reload them';
             break;
     }
 }
 
 window.onload = () => {
     document.getElementById("logOutBtn").addEventListener("click", logOut);
-
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     if (token && id) {
