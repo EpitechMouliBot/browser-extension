@@ -83,6 +83,7 @@
     position: absolute;
     left: 48.4%;
     top: 66%;
+    outline: none;
 }
 
 #confirmPasswordInput::placeholder {

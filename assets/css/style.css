@@ -6,8 +6,12 @@
 body {
     width: 500px;
     height: 370px;
-    background-color: transparent;
     background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+#container {
+    text-align: center;
 }
 
 #backgroundPopup {
@@ -27,18 +31,6 @@ body {
     background-image:url("../image/background/my_account/background_myacc.jpg");
 }
 
-/* #main-title {
-    color: rgb(14, 187, 144);
-}
-
-.center {
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-}
-
 .visible {
     visibility: visible;
 }
@@ -46,55 +38,32 @@ body {
     visibility: hidden;
 }
 
-.info, .success, .warning, .error, .validation {
-    border: 1px solid;
-    border-radius: 10px;
-    margin: 10px 0px;
-    padding: 15px 10px 15px 50px;
+#errorImage {
+    color:rgb(223, 223, 201);
+    position: absolute;
+    font-size:14px;
+    text-align: center;
+    padding: 190px 110px;
+    height: 100%;
+    width: 100%;
     background-repeat: no-repeat;
-    background-position: 10px center;
-}
-.info {
-    color: #00529B;
-    background-color: #BDE5F8;
-    background-image: url('https://i.imgur.com/ilgqWuX.png');
-}
-.success {
-    color: #4F8A10;
-    background-color: #DFF2BF;
-    background-image: url('https://i.imgur.com/Q9BGTuy.png');
-}
-.warning {
-    color: #9F6000;
-    background-color: #FEEFB3;
-    background-image: url('https://i.imgur.com/Z8q7ww7.png');
-}
-.error {
-    color: #D8000C;
-    background-color: #FFBABA;
-    background-image: url('https://i.imgur.com/GnyDvKN.png');
-}
-.validation {
-    color: #D63301;
-    background-color: #FFCCBA;
-    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-color: transparent;
+    background-position: 0px 0px;
+    background-image:url("../image/error_message.png");
 }
 
-a.button {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 50%;
+#errorMessage {
+    color:rgb(223, 223, 201);
+    font-size:14px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 185px 130px;
+    /* height: 100%; */
+    /* width: 100%; */
+    /* background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 0px 0px;
+    background-image:url("../image/error_message.png"); */
 }
-a:hover {
-    background-color: #ddd;
-    color: black;
-}
-a.previous {
-    background-color: #f1f1f1;
-    color: black;
-}
-a.next {
-    background-color: #04AA6D;
-    color: white;
-} */
