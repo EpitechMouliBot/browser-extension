@@ -41,9 +41,6 @@ body {
 #errorImage {
     color:rgb(223, 223, 201);
     position: absolute;
-    font-size:14px;
-    text-align: center;
-    padding: 190px 110px;
     height: 100%;
     width: 100%;
     background-repeat: no-repeat;
@@ -60,10 +57,4 @@ body {
     margin-right: auto;
     width: 50%;
     padding: 185px 130px;
-    /* height: 100%; */
-    /* width: 100%; */
-    /* background-repeat: no-repeat;
-    background-color: transparent;
-    background-position: 0px 0px;
-    background-image:url("../image/error_message.png"); */
 }
