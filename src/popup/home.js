@@ -42,7 +42,6 @@ window.onload = () => {
         request.onload = () => {
             if (request.status === 200) {
                 const resBody = JSON.parse(request.response);
-                console.log("rsp: ", resBody);
                 adaptiveBackground(resBody.cookies_status);
                 setDivText('caseEmail', resBody.email);
                 setDivText('caseDiscordID', resBody.channel_id);

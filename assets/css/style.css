@@ -58,3 +58,12 @@ body {
     width: 50%;
     padding: 185px 130px;
 }
+
+
+input:required:invalid, input:focus:invalid {
+    border-color: red;
+
+}
+input:required:valid {
+    border-color: transparent;
+}

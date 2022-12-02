@@ -26,11 +26,11 @@ function checkAllInputs() {
         return true;
     }
     if (!checkEmail(emailInput)) {
-        setErrorMessage(true, "Email is invalid");
+        // setErrorMessage(true, "Email is invalid");
         return true;
     }
     if (!checkPassword(passwordInput)) {
-        setErrorMessage(true, "Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*");
+        // setErrorMessage(true, "Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*");
         return true;
     }
     if (!checkPasswordMatch(passwordInput, confirmPasswordInput)) {
@@ -46,11 +46,13 @@ function checkAllInputs() {
 }
 
 function enableDisableSubmitBtn() {
-    let submitBtn = document.getElementById("submitBtn");
+    // let submitBtn = document.getElementById("submitBtn");
     submitBtn.disabled = checkAllInputs();
 }
 
 async function submitForm(form) {
+    if (!checkAllInputs())
+        return
     if (form.preventDefault)
         form.preventDefault();
     const formData = new FormData(form.target);
@@ -89,10 +91,12 @@ async function submitForm(form) {
 }
 
 window.onload = () => {
-    document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("confirmPasswordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("acceptCGU").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("confirmPasswordInput").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("acceptCGU").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("submitBtn").addEventListener("mouse", enableDisableSubmitBtn);
+    submitBtn.disabled = false;
     document.getElementById("haveAccount").addEventListener("click", () => {window.location.href = './SignIn.html'});
 
     let form = document.getElementById('signUpForm');

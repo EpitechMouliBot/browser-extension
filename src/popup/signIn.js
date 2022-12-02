@@ -33,13 +33,13 @@ function submitForm(form) {
         if (request.status === 201) {
             localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
             localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
-            alert("Account found");
+            // alert("Account found");
             window.location.href = "./home.html";
         } else {
-            alert("Bad authentification");
+            // alert("Bad authentification");
             let messageRes = `Error ${request.status} when sending request: ${request.responseText}`;
             console.log(messageRes);
-            alert(messageRes);
+            // alert(messageRes);
         }
     };
     return true;

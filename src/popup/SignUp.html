@@ -11,7 +11,7 @@
     <div id="container">
         <form id="signUpForm" action="#" method="post">
             <input type="email" name="email" id="emailInput" class="buttonInput" placeholder="Email">
-            <input type="password" name="password" id="passwordInput" class="buttonInputSignUp" placeholder="Password">
+            <input type="password" name="password" id="passwordInput" class="buttonInputSignUp" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Enter an ID consisting of 4-8 hexadecimal digits" placeholder="Password">
             <input type="password" name="confirmpassword" id="confirmPasswordInput" class="buttonInput" placeholder="Confirm password">
             <div class="checkboxAcceptCGU">
                 <input type="checkbox" name="CGU" id="acceptCGU">
@@ -21,7 +21,7 @@
         </form>
         <button id="haveAccount" class="buttonInput">Already have an account ? Sign in !</button>
         <div id="errorImage" class="hidden"></div>
-        <p id="errorMessage" class="hidden">csdcvesdvcedv</p>
+        <p id="errorMessage" class="hidden"></p>
     </div>
 </body>
 </html>

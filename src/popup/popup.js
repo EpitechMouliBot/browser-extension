@@ -5,7 +5,7 @@ async function checkValidToken() {
     let id = localStorage.getItem(localStorageIdName);
     if (token && id) {
         let request = await makeGetRequest(`${mouliBotApiUrl}/user/id/${id}`, token);
-        if (request.status === 200)
+        if (request && request.status === 200)
             return (true);
         else
             return (false);
@@ -15,8 +15,8 @@ async function checkValidToken() {
 window.onload = async () => {
     const activeTab = await getCurrentTab();
     if (activeTab.url.includes("https://my.epitech.eu")) {
-        let test = await checkValidToken();
-        if (test)
+        let checkToken = await checkValidToken();
+        if (checkToken)
             window.location.href = "./home.html";
         else
             window.location.href = './SignIn.html';

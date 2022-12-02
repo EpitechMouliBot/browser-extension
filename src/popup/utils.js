@@ -50,7 +50,9 @@ export async function makeGetRequest(url, token) {
             "Authorization": "Bearer " + token,
             "Content-Type": "application/json"
         }};
-    return fetch(url, options).then((response) => response)
+    return fetch(url, options)
+    .then((response) => response)
+    .catch((e) => console.log(e))
 }
 
 
