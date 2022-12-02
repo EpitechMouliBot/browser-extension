@@ -10,8 +10,8 @@
 <body id="backgroundSignup">
     <div id="container">
         <form id="signUpForm" action="#" method="post">
-            <input type="email" name="email" id="emailInput" class="buttonInput" placeholder="Email">
-            <input type="password" name="password" id="passwordInput" class="buttonInputSignUp" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Enter an ID consisting of 4-8 hexadecimal digits" placeholder="Password">
+            <input type="email" name="email" id="emailInput" class="buttonInput" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Invalid email format" placeholder="Email">
+            <input type="password" name="password" id="passwordInput" class="buttonInputSignUp" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Password">
             <input type="password" name="confirmpassword" id="confirmPasswordInput" class="buttonInput" placeholder="Confirm password">
             <div class="checkboxAcceptCGU">
                 <input type="checkbox" name="CGU" id="acceptCGU">

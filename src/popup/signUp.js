@@ -1,17 +1,14 @@
 import { setErrorMessage, getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName, getValueFromInput } from "./utils.js"
 
 function checkEmail(email) {
-    // return true;
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 function checkPassword(password) {
-    // return true;
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,100})/.test(password)
 }
 
 function checkPasswordMatch(password, confirmPassword) {
-    // return true;
     return password === confirmPassword;
 }
 
@@ -52,7 +49,7 @@ function enableDisableSubmitBtn() {
 
 async function submitForm(form) {
     if (checkAllInputs())
-        return
+        return false;
     if (form.preventDefault)
         form.preventDefault();
     const formData = new FormData(form.target);

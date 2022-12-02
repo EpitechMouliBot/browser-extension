@@ -1,6 +1,6 @@
 {
-    "name": "MyEpitech Notification",
-    "description": "Extension for MyEpitech Notification",
+    "name": "Epitech Mouli Bot",
+    "description": "Extension for Epitech Mouli Bot",
     "version": "1.0.0",
     "permissions": [
         "storage",
@@ -15,7 +15,7 @@
     },
     "action": {
         "default_popup": "src/popup/popup.html",
-        "default_title": "MyEpitech Notification"
+        "default_title": "Epitech Mouli Bot"
     },
     "icons": {
         "16": "assets/icons/16.png",
