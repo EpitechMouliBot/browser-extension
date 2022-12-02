@@ -10,18 +10,18 @@
 <body id="backgroundSignup">
     <div id="container">
         <form id="signUpForm" action="#" method="post">
-            <input type="email" name="email" id="emailInput" class="buttonInput" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Invalid email format" placeholder="Email">
-            <input type="password" name="password" id="passwordInput" class="buttonInputSignUp" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Password">
-            <input type="password" name="confirmpassword" id="confirmPasswordInput" class="buttonInput" placeholder="Confirm password">
+            <input type="email" name="email" id="emailInput" class="buttonInput" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Invalid email format" placeholder="Email" required>
+            <input type="password" name="password" id="passwordInput" class="buttonInputSignUp" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Password" required>
+            <input type="password" name="confirmpassword" id="confirmPasswordInput" class="buttonInput" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Confirm password" required>
             <div class="checkboxAcceptCGU">
                 <input type="checkbox" name="CGU" id="acceptCGU">
                 I accept the <a href="https://epitechmoulibot.substack.com/p/cgu-epitechmoulibot" target = "_blank">terms and condition</a> of use
             </div>
-            <input type="submit" value="Sign up" id="submitBtn" disabled="true">
+            <input type="submit" value="Sign up" id="submitBtn">
         </form>
         <button id="haveAccount" class="buttonInput">Already have an account ? Sign in !</button>
-        <div id="errorImage" class="hidden"></div>
-        <p id="errorMessage" class="hidden"></p>
+        <div id="alertImage" class="hidden"></div>
+        <p id="alertMessage" class="hidden"></p>
     </div>
 </body>
 </html>

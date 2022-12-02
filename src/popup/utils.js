@@ -10,20 +10,6 @@ export function getValueFromInput(id) {
     return sanitizeInput(document.getElementById(id).value);
 }
 
-export function setErrorMessage(visible, text) {
-    let errorImage = document.getElementById("errorImage");
-    let errorMessage = document.getElementById("errorMessage");
-    if (visible) {
-        errorImage.className = "visible";
-        errorMessage.className = "visible";
-        errorMessage.textContent = text;
-    } else {
-        errorImage.className = "hidden";
-        errorMessage.className = "hidden";
-        errorMessage.textContent = text;
-    }
-}
-
 export async function getCurrentTab() {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     return tab;
@@ -54,7 +40,6 @@ export async function makeGetRequest(url, token) {
     .then((response) => response)
     .catch((e) => console.log(e))
 }
-
 
 export function initRequest(method, url, body = {}, bearerToken = undefined) {
     let request = new XMLHttpRequest();
