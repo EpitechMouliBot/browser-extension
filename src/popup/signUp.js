@@ -51,7 +51,7 @@ function enableDisableSubmitBtn() {
 }
 
 async function submitForm(form) {
-    if (!checkAllInputs())
+    if (checkAllInputs())
         return
     if (form.preventDefault)
         form.preventDefault();
