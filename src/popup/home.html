@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script type="module" src="./home.js"></script>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./home.css">
-    <title>Home</title>
-</head>
-<body>
-    <h1 id="main-title">MyEpitechNotification</h1>
-    <div id="container">
-        <h2 class="title">Your account</h2>
-        <table id="account-infos-table">
-            <thead>
-                <tr>
-                    <th colspan="2">Infos</th>
-                </tr>
-            </thead>
-            <tbody id="account-infos-tbody">
-            </tbody>
-        </table>
-        <br>
-        <button class="logOutBtn" id="logOutBtn">Logout</button>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <script type="module" src="./home.js"></script>
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/buttons.css">
+        <link rel="stylesheet" href="../../assets/css/home.css">
+        <title>MyAccount</title>
+    </head>
+    <body id="backgroundHome">
+        <div id="conteneur">
+            <div id="caseEmail"></div>
+            <div id="caseDiscordID"></div>
+            <div id="caseDateAccount"></div>
+            <div id="caseDiscordStatus"></div>
+        </div>
+        <button id="logOutBtn">Logout</button>
+        <img id="cookiesStatusImg" src="../../assets/image/background/my_account/cookies_status_void.jpg" title=''>
+    </body>
 </html>

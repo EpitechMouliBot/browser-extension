@@ -1,29 +1,24 @@
-import { initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl, getCurrentTab } from "./utils.js"
+import { makeGetRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl, getCurrentTab } from "./utils.js"
 
-function checkValidToken() {
+async function checkValidToken() {
     let token = localStorage.getItem(localStorageTokenName);
     let id = localStorage.getItem(localStorageIdName);
     if (token && id) {
-        let request = initRequest("GET", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
-        request.onload = () => {
-            if (request.status === 200) {
-                window.location.href = "./home.html";
-            } else {
-                console.log(`Error ${request.status}: ${request.responseText}`);
-            }
-        };
+        let request = await makeGetRequest(`${mouliBotApiUrl}/user/id/${id}`, token);
+        if (request && request.status === 200)
+            return (true);
+        else
+            return (false);
     }
 }
 
 window.onload = async () => {
     const activeTab = await getCurrentTab();
-
-    if (!activeTab.url.includes("https://my.epitech.eu")) {
-        const container = document.getElementById("container");
-        container.innerHTML = '<h2 class="title">Please go on my.epitech.eu</h2>';
-    } else {
-        document.getElementById("login").addEventListener("click", () => {window.location.href = './logIn.html'});
-        document.getElementById("signup").addEventListener("click", () => {window.location.href = './signUp.html'});
-        checkValidToken();
+    if (activeTab.url.includes("https://my.epitech.eu")) {
+        let checkToken = await checkValidToken();
+        if (checkToken)
+            window.location.href = "./home.html";
+        else
+            window.location.href = './SignIn.html';
     }
 }

@@ -1,0 +1,33 @@
+#cookiesStatusImg {
+    position: absolute;
+    left: 38.6%;
+    top: 88.6%;
+}
+
+#conteneur
+{
+    position: absolute;
+    left: 11%;
+    top: 43.5%;
+
+    display: grid;
+    grid-template-areas: "a b" "c d";
+    grid-template-rows: 44px;
+    grid-template-columns: 204px;
+}
+
+#logOutBtn {
+    background-color:#0049ff;
+	border-radius:11px;
+	cursor:pointer;
+	color:#ffffff;
+	padding:3px 26px;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+
+    position: absolute;
+    left: 64%;
+    top: 88%;
+}

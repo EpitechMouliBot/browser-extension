@@ -1,17 +1,14 @@
 import { setErrorMessage, getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName, getValueFromInput } from "./utils.js"
 
 function checkEmail(email) {
-    // return true;
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 function checkPassword(password) {
-    // return true;
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,100})/.test(password)
 }
 
 function checkPasswordMatch(password, confirmPassword) {
-    // return true;
     return password === confirmPassword;
 }
 
@@ -19,21 +16,26 @@ function checkAllInputs() {
     let emailInput = getValueFromInput("emailInput");
     let passwordInput = getValueFromInput("passwordInput");
     let confirmPasswordInput = getValueFromInput("confirmPasswordInput");
+    let cguInput = document.getElementById('acceptCGU');
 
-    if (emailInput === "" || passwordInput === "" || confirmPasswordInput === "") {
+    if (emailInput === "" || passwordInput === "" || confirmPasswordInput === "" /*|| !cguInput.checked*/) {
         setErrorMessage(false, "");
         return true;
     }
     if (!checkEmail(emailInput)) {
-        setErrorMessage(true, "Email is invalid");
+        // setErrorMessage(true, "Email is invalid");
         return true;
     }
     if (!checkPassword(passwordInput)) {
-        setErrorMessage(true, "Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*");
+        // setErrorMessage(true, "Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*");
         return true;
     }
     if (!checkPasswordMatch(passwordInput, confirmPasswordInput)) {
         setErrorMessage(true, "Passwords must match");
+        return true;
+    }
+    if (!cguInput.checked) {
+        setErrorMessage(true, "CGU not accepted");
         return true;
     }
     setErrorMessage(false, "");
@@ -41,11 +43,13 @@ function checkAllInputs() {
 }
 
 function enableDisableSubmitBtn() {
-    let submitBtn = document.getElementById("submitBtn");
+    // let submitBtn = document.getElementById("submitBtn");
     submitBtn.disabled = checkAllInputs();
 }
 
 async function submitForm(form) {
+    if (checkAllInputs())
+        return false;
     if (form.preventDefault)
         form.preventDefault();
     const formData = new FormData(form.target);
@@ -84,10 +88,13 @@ async function submitForm(form) {
 }
 
 window.onload = () => {
-    document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("confirmPasswordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("haveAccount").addEventListener("click", () => {window.location.href = './logIn.html'});
+    // document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("confirmPasswordInput").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("acceptCGU").addEventListener("keyup", enableDisableSubmitBtn);
+    // document.getElementById("submitBtn").addEventListener("mouse", enableDisableSubmitBtn);
+    submitBtn.disabled = false;
+    document.getElementById("haveAccount").addEventListener("click", () => {window.location.href = './SignIn.html'});
 
     let form = document.getElementById('signUpForm');
     if (form.attachEvent) {

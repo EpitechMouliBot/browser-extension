@@ -1,0 +1,100 @@
+#submitBtn {
+	background-color:#0049ff;
+	border-radius:11px;
+	cursor:pointer;
+	color:#ffffff;
+	padding:3px 30px;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+    position: absolute;
+    left: 67%;
+    top: 80%;
+}
+
+#submitBtn:hover {
+	background: linear-gradient(to top left, #0049ff 0%, #0079ff 100%);
+}
+
+#submitBtn:active {
+	top:80.4%;
+}
+
+#emailInput {
+    width: 63%;
+    position: absolute;
+    left: 8%;
+    top: 54.4%;
+    outline: none;
+}
+
+.buttonInput {
+    background: transparent;
+    border: none;
+	border-radius:11px;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:16px;
+	padding:7px 42px;
+    left: 0%;
+    top: 80%;
+}
+
+#noAccount {
+    font-size: 14px;
+    color: #0049ff;
+    position: absolute;
+    padding: unset;
+    left: 8%;
+    top: 76%;
+}
+
+#haveAccount {
+    font-size: 14px;
+    color: #0049ff;
+    position: absolute;
+    padding: unset;
+    left: 8%;
+    top: 76%;
+}
+
+#passwordInput {
+    width: 63%;
+    position: absolute;
+    left: 8%;
+    top: 66%;
+    outline: none;
+}
+
+#passwordInput.buttonInputSignUp {
+    width: 22.4%;
+    background: transparent;
+    border: none;
+	border-radius:11px;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:16px;
+	padding:7px 42px;
+}
+
+#confirmPasswordInput {
+    width: 22.4%;
+    position: absolute;
+    left: 48.4%;
+    top: 66%;
+    outline: none;
+}
+
+#confirmPasswordInput::placeholder {
+    width: max-content;
+}
+
+.checkboxAcceptCGU {
+    color: #0049ff;
+	font-family:Arial;
+	font-size:13px;
+    position: absolute;
+    left: 7.2%;
+    top: 81.4%;
+}

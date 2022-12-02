@@ -1,0 +1,69 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 500px;
+    height: 370px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+#container {
+    text-align: center;
+}
+
+#backgroundPopup {
+    background-image:url("../image/background/background_wrong_website.jpg");
+}
+
+#backgroundSignIn {
+    background-image:url("../image/background/background_signin.jpg");
+}
+
+#backgroundSignup {
+    background-image:url("../image/background/background_signup.jpg");
+
+}
+
+#backgroundHome {
+    background-image:url("../image/background/my_account/background_myacc.jpg");
+}
+
+.visible {
+    visibility: visible;
+}
+.hidden {
+    visibility: hidden;
+}
+
+#errorImage {
+    color:rgb(223, 223, 201);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 0px 0px;
+    background-image:url("../image/error_message.png");
+}
+
+#errorMessage {
+    color:rgb(223, 223, 201);
+    font-size:14px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 185px 130px;
+}
+
+
+input:required:invalid, input:focus:invalid {
+    border-color: red;
+
+}
+input:required:valid {
+    border-color: transparent;
+}

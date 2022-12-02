@@ -11,12 +11,14 @@ export function getValueFromInput(id) {
 }
 
 export function setErrorMessage(visible, text) {
+    let errorImage = document.getElementById("errorImage");
     let errorMessage = document.getElementById("errorMessage");
-
     if (visible) {
-        errorMessage.className = "visible validation";
+        errorImage.className = "visible";
+        errorMessage.className = "visible";
         errorMessage.textContent = text;
     } else {
+        errorImage.className = "hidden";
         errorMessage.className = "hidden";
         errorMessage.textContent = text;
     }
@@ -40,6 +42,19 @@ export function getCookies(activeTabUrl) {
         });
     })
 }
+
+export async function makeGetRequest(url, token) {
+    const options = {
+        method: 'GET',
+        headers: {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        }};
+    return fetch(url, options)
+    .then((response) => response)
+    .catch((e) => console.log(e))
+}
+
 
 export function initRequest(method, url, body = {}, bearerToken = undefined) {
     let request = new XMLHttpRequest();

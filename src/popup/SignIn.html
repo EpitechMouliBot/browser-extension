@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script type="module" src="./signIn.js"></script>
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/buttons.css">
+        <title>Sign in</title>
+    </head>
+    <body id="backgroundSignIn">
+        <div id="container">
+            <form id="SignInForm" action="" method="post">
+                <input type="email" name="email" id="emailInput" class="buttonInput" placeholder="Email">
+                <input type="password" name="password" id="passwordInput" class="buttonInput" placeholder="Password">
+                <input type="submit" value="Sign in" id="submitBtn" disabled="true">
+            </form>
+            <button id="noAccount" class="buttonInput">Don't have an account ? Sign up !</button>
+            <div id="errorImage" class="hidden"></div>
+            <p id="errorMessage" class="hidden"></p>
+        </div>
+    </body>
+</html>
