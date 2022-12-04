@@ -1,5 +1,5 @@
 import { getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
-import { setErrorAlert, setSuccessAlert, closeAlert } from "./alert.js"
+import { setErrorAlert, closeAlert } from "./alert.js"
 
 function checkEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -57,11 +57,8 @@ async function submitForm(form) {
             if (request.status === 201) {
                 localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
                 localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
-                setSuccessAlert(true, "Account created");
                 window.location.href = "./home.html";
             } else {
-                let messageRes = `Error ${request.status} when sending request: ${request.responseText}`;
-                console.log(messageRes);
                 setErrorAlert(true, "Account already exist")
             }
         };
