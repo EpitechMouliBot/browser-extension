@@ -18,9 +18,8 @@ function submitForm(form) {
             localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
             localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
             window.location.href = "./home.html";
-        } else {
+        } else
             setErrorAlert(true, "Invalid credentials")
-        }
     };
     return true;
 }
