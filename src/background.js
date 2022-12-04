@@ -24,11 +24,8 @@ function getCookiesForURL(url) {
 chrome.runtime.onMessage.addListener((obj, sender, response) => {
     const { type, url } = obj;
 
-    console.log('message of type: ' + type + ' recieved:\n\turl: ' + url);
     if (type === "GET_COOKIES") {
         getCookiesForURL(url).then((data) => {
-            console.log("Cookies from background:");
-            console.log(data);
             response({ response: data });
         });
         return true;

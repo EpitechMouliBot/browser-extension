@@ -1,21 +1,5 @@
-import { setErrorMessage, initRequest, localStorageIdName, localStorageTokenName, getValueFromInput } from "./utils.js"
-
-function checkAllInputs() {
-    let emailInput = getValueFromInput("emailInput");
-    let passwordInput = getValueFromInput("passwordInput");
-
-    if (emailInput === "" || passwordInput === "") {
-        setErrorMessage(false, "");
-        return true;
-    }
-    setErrorMessage(false, "");
-    return false;
-}
-
-function enableDisableSubmitBtn() {
-    let submitBtn = document.getElementById("submitBtn");
-    submitBtn.disabled = checkAllInputs();
-}
+import { initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
+import { setErrorAlert, closeAlert } from "./alert.js"
 
 function submitForm(form) {
     if (form.preventDefault)
@@ -33,21 +17,17 @@ function submitForm(form) {
         if (request.status === 201) {
             localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
             localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
-            // alert("Account found");
             window.location.href = "./home.html";
-        } else {
-            // alert("Bad authentification");
-            let messageRes = `Error ${request.status} when sending request: ${request.responseText}`;
-            console.log(messageRes);
-            // alert(messageRes);
-        }
+        } else
+            setErrorAlert(true, "Invalid credentials")
     };
     return true;
 }
 
 window.onload = () => {
-    document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
-    document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
+    let submitBtn = document.getElementById("submitBtn");
+    submitBtn.disabled = false;
+    document.getElementById("alertMessage").addEventListener("click", closeAlert);
     document.getElementById("noAccount").addEventListener("click", () => {window.location.href = './SignUp.html'});
 
     let form = document.getElementById('SignInForm');

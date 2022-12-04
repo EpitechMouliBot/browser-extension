@@ -1,55 +1,41 @@
-import { setErrorMessage, getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName, getValueFromInput } from "./utils.js"
+import { getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
+import { setErrorAlert, closeAlert } from "./alert.js"
 
 function checkEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 function checkPassword(password) {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,100})/.test(password)
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
 }
 
 function checkPasswordMatch(password, confirmPassword) {
     return password === confirmPassword;
 }
 
-function checkAllInputs() {
-    let emailInput = getValueFromInput("emailInput");
-    let passwordInput = getValueFromInput("passwordInput");
-    let confirmPasswordInput = getValueFromInput("confirmPasswordInput");
-    let cguInput = document.getElementById('acceptCGU');
+function checkAllInputs(emailInput, passwordInput, confirmPasswordInput) {
+    const cguInput = document.getElementById('acceptCGU')
 
-    if (emailInput === "" || passwordInput === "" || confirmPasswordInput === "" /*|| !cguInput.checked*/) {
-        setErrorMessage(false, "");
-        return true;
-    }
     if (!checkEmail(emailInput)) {
-        // setErrorMessage(true, "Email is invalid");
-        return true;
+        setErrorAlert(true, "Email missing");
+        return (false);
     }
-    if (!checkPassword(passwordInput)) {
-        // setErrorMessage(true, "Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*");
-        return true;
+    if (!checkPassword(passwordInput) || !checkPassword(confirmPasswordInput)) {
+        setErrorAlert(true, "Password missing");
+        return (false);
     }
     if (!checkPasswordMatch(passwordInput, confirmPasswordInput)) {
-        setErrorMessage(true, "Passwords must match");
-        return true;
+        setErrorAlert(true, "Passwords must match");
+        return (false);
     }
     if (!cguInput.checked) {
-        setErrorMessage(true, "CGU not accepted");
-        return true;
+        setErrorAlert(true, "CGU not accepted");
+        return (false);
     }
-    setErrorMessage(false, "");
-    return false;
-}
-
-function enableDisableSubmitBtn() {
-    // let submitBtn = document.getElementById("submitBtn");
-    submitBtn.disabled = checkAllInputs();
+    return (true);
 }
 
 async function submitForm(form) {
-    if (checkAllInputs())
-        return false;
     if (form.preventDefault)
         form.preventDefault();
     const formData = new FormData(form.target);
@@ -57,12 +43,10 @@ async function submitForm(form) {
     const email = data.email;
     const password = data.password;
     const confirmPassword = data.confirmpassword;
-
-    if (!checkEmail(email) || !checkPassword(password) || !checkPasswordMatch(password, confirmPassword))
-        throw new Error("Checks failed");
+    if (checkAllInputs(email, password, confirmPassword) === false)
+        return (false);
 
     const activeTab = await getCurrentTab();
-
     getCookies(activeTab.url).then((cookiesData) => {
         let request = initRequest("POST", `http://127.0.0.1:3000/register`, {
             "email": email,
@@ -73,29 +57,22 @@ async function submitForm(form) {
             if (request.status === 201) {
                 localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
                 localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
-                alert("Account created");
                 window.location.href = "./home.html";
             } else {
-                let messageRes = `Error ${request.status} when sending request: ${request.responseText}`;
-                console.log(messageRes);
-                alert(messageRes);
+                setErrorAlert(true, "Account already exist")
             }
         };
     }).catch((error) => {
         alert("Unable to load cookies");
     });
-    return true;
+    return (true);
 }
 
 window.onload = () => {
-    // document.getElementById("emailInput").addEventListener("keyup", enableDisableSubmitBtn);
-    // document.getElementById("passwordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    // document.getElementById("confirmPasswordInput").addEventListener("keyup", enableDisableSubmitBtn);
-    // document.getElementById("acceptCGU").addEventListener("keyup", enableDisableSubmitBtn);
-    // document.getElementById("submitBtn").addEventListener("mouse", enableDisableSubmitBtn);
+    let submitBtn = document.getElementById("submitBtn");
     submitBtn.disabled = false;
+    document.getElementById("alertMessage").addEventListener("click", closeAlert);
     document.getElementById("haveAccount").addEventListener("click", () => {window.location.href = './SignIn.html'});
-
     let form = document.getElementById('signUpForm');
     if (form.attachEvent) {
         form.attachEvent("submit", submitForm);

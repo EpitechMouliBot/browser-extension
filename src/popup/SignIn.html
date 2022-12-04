@@ -10,13 +10,13 @@
     <body id="backgroundSignIn">
         <div id="container">
             <form id="SignInForm" action="" method="post">
-                <input type="email" name="email" id="emailInput" class="buttonInput" placeholder="Email">
-                <input type="password" name="password" id="passwordInput" class="buttonInput" placeholder="Password">
-                <input type="submit" value="Sign in" id="submitBtn" disabled="true">
+                <input type="email" name="email" id="emailInput" class="buttonInput" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Invalid email format" placeholder="Email" required>
+                <input type="password" name="password" id="passwordInput" class="buttonInput" placeholder="Password" required>
+                <input type="submit" value="Sign in" id="submitBtn">
             </form>
             <button id="noAccount" class="buttonInput">Don't have an account ? Sign up !</button>
-            <div id="errorImage" class="hidden"></div>
-            <p id="errorMessage" class="hidden"></p>
+            <div id="alertImage" class="hidden"></div>
+            <p id="alertMessage" class="hidden"></p>
         </div>
     </body>
 </html>
