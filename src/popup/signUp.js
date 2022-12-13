@@ -1,17 +1,6 @@
-import { getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
+import { getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl } from "./utils.js"
+import { checkEmail, checkPassword, checkPasswordMatch } from "./utils.js"
 import { setErrorAlert, closeAlert } from "./alert.js"
-
-function checkEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-}
-
-function checkPassword(password) {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
-}
-
-function checkPasswordMatch(password, confirmPassword) {
-    return password === confirmPassword;
-}
 
 function checkAllInputs(emailInput, passwordInput, confirmPasswordInput) {
     const cguInput = document.getElementById('acceptCGU')
@@ -48,9 +37,9 @@ async function submitForm(form) {
 
     const activeTab = await getCurrentTab();
     getCookies(activeTab.url).then((cookiesData) => {
-        let request = initRequest("POST", `http://127.0.0.1:3000/register`, {
+        let request = initRequest("POST", `${mouliBotApiUrl}/register`, {
             "email": email,
-            "password": password, // TODO encrypter password et cookies
+            "password": password,
             "cookies": JSON.stringify(cookiesData)
         });
         request.onload = () => {
@@ -63,7 +52,7 @@ async function submitForm(form) {
             }
         };
     }).catch((error) => {
-        alert("Unable to load cookies");
+        setErrorAlert(true, "Unable to load cookies");
     });
     return (true);
 }

@@ -3,6 +3,18 @@ export const localStorageIdName = "mouliBotAccountId";
 export const mouliBotApiUrl = "http://127.0.0.1:3000";
 import { setErrorAlert } from "./alert.js"
 
+export function checkEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
+export function checkPassword(password) {
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
+}
+
+export function checkPasswordMatch(password, confirmPassword) {
+    return password === confirmPassword;
+}
+
 function sanitizeInput(input) {
     return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }

@@ -1,4 +1,4 @@
-import { initRequest, localStorageIdName, localStorageTokenName } from "./utils.js"
+import { initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl } from "./utils.js"
 import { setErrorAlert, closeAlert } from "./alert.js"
 
 function submitForm(form) {
@@ -9,7 +9,7 @@ function submitForm(form) {
     const email = data.email;
     const password = data.password;
 
-    let request = initRequest("POST", `http://127.0.0.1:3000/login`, {
+    let request = initRequest("POST", `${mouliBotApiUrl}/login`, {
         "email": email,
         "password": password
     });

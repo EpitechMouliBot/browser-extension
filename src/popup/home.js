@@ -1,4 +1,29 @@
 import { localStorageIdName, localStorageTokenName, initRequest, mouliBotApiUrl } from "./utils.js"
+import { setErrorAlert, setSuccessAlert, closeAlert } from "./alert.js"
+
+async function reloadCookies() {
+    const token = localStorage.getItem(localStorageTokenName);
+    const id = localStorage.getItem(localStorageIdName);
+    if (!id || !token) {
+        setErrorAlert(true, "Please reopen this window and login");
+        return;
+    }
+    const activeTab = await getCurrentTab();
+    getCookies(activeTab.url).then((cookiesData) => {
+        let request = initRequest("PUT", `${mouliBotApiUrl}/id/${id}`, {
+            "cookies": JSON.stringify(cookiesData)
+        }, token);
+        request.onload = () => {
+            if (request.status === 200) {
+                setSuccessAlert(true, "Cookies reloaded!");
+            } else {
+                setErrorAlert(true, "Unable to reload cookies");
+            }
+        };
+    }).catch((error) => {
+        setErrorAlert(true, "Unable to reload cookies");
+    });
+}
 
 function logOut() {
     localStorage.removeItem(localStorageIdName);
@@ -34,6 +59,7 @@ function adaptiveBackground(cookies_status) {
 }
 
 window.onload = () => {
+    document.getElementById("reloadCookiesBtn").addEventListener("click", reloadCookies);
     document.getElementById("logOutBtn").addEventListener("click", logOut);
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);

@@ -13,7 +13,22 @@
     top: 80%;
 }
 
-#submitBtn:hover {
+#cancelBtn {
+    background-color:#0049ff;
+	border-radius:11px;
+	cursor:pointer;
+	color:#ffffff;
+	padding:3px 30px;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+    position: absolute;
+    left: 13%;
+    top: 80%;
+}
+
+#submitBtn:hover, #cancelBtn:hover {
 	background: linear-gradient(to top left, #0049ff 0%, #0079ff 100%);
 }
 
