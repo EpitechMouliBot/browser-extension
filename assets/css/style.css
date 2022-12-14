@@ -24,7 +24,10 @@ body {
 
 #backgroundSignup {
     background-image:url("../image/background/background_signup.jpg");
+}
 
+#backgroundModifyAccount {
+    background-image:url("../image/background/background_modify_account.jpg");
 }
 
 #backgroundHome {

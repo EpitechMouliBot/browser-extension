@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script type="module" src="./modifyAccount.js"></script>
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/buttons.css">
+        <title>MyAccount</title>
+    </head>
+    <body id="backgroundModifyAccount">
+        <div id="conteneur">
+            <form id="modifyForm" action="#" method="post">
+                <input type="email" name="email" id="emailInput" class="buttonInput" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Invalid email format" placeholder="Email" required>
+                <input type="password" name="password" id="passwordInput" class="buttonInput" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Password">
+                <input type="password" name="confirmpassword" id="confirmPasswordInput" class="buttonInput" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Confirm password">
+
+                <input type="submit" value="Ok" id="submitBtn">
+            </form>
+            <button id="cancelBtn">Cancel</button>
+
+            <p>💡 To change your discord id, type /login in discord with the discord account you want to link</p>
+            <button id="deleteAccountBtn" title="Completely delete your account">Delete account</button>
+
+            <div id="alertImage" class="hidden"></div>
+            <p id="alertMessage" class="hidden"></p>
+        </div>
+    </body>
+</html>
