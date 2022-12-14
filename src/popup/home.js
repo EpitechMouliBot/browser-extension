@@ -1,4 +1,4 @@
-import { localStorageIdName, localStorageTokenName, initRequest, mouliBotApiUrl } from "./utils.js"
+import { localStorageIdName, localStorageTokenName, initRequest, mouliBotApiUrl, getCookies, getCurrentTab } from "./utils.js"
 import { setErrorAlert, setSuccessAlert, closeAlert } from "./alert.js"
 
 async function reloadCookies() {
@@ -10,7 +10,7 @@ async function reloadCookies() {
     }
     const activeTab = await getCurrentTab();
     getCookies(activeTab.url).then((cookiesData) => {
-        let request = initRequest("PUT", `${mouliBotApiUrl}/id/${id}`, {
+        let request = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, {
             "cookies": JSON.stringify(cookiesData)
         }, token);
         request.onload = () => {
@@ -59,8 +59,12 @@ function adaptiveBackground(cookies_status) {
 }
 
 window.onload = () => {
+    document.getElementById("alertMessage").addEventListener("click", closeAlert);
     document.getElementById("reloadCookiesBtn").addEventListener("click", reloadCookies);
     document.getElementById("logOutBtn").addEventListener("click", logOut);
+    document.getElementById("modifyAccountBtn").addEventListener("click", () => {
+        window.location.href = "./modifyAccount.html";
+    });
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     if (token && id) {
@@ -73,7 +77,7 @@ window.onload = () => {
                 setDivText('caseDiscordID', resBody.channel_id);
                 const date = new Date(resBody.created_at);
                 setDivText('caseDateAccount', date.toLocaleDateString("fr"));
-                setDivText('caseDiscordStatus', resBody.discord_status === 1 ? 'Active' : 'Disable');
+                setDivText('caseDiscordStatus', resBody.discord_status === 1 ? 'Enabled' : 'Disabled');
             } else {
                 console.log(`Error ${request.status}: ${request.responseText}`);
             }

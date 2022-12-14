@@ -5,48 +5,48 @@ import { setErrorAlert, closeAlert } from "./alert.js"
 function checkAllInputs(emailInput, passwordInput, confirmPasswordInput) {
     if (!checkEmail(emailInput)) {
         setErrorAlert(true, "Email missing");
-        return (false);
+        return false;
     }
     if (passwordInput === "" && confirmPasswordInput === "")
-        return;
+        return true;
     if (confirmPasswordInput === "" || passwordInput === "") {
         setErrorAlert(true, "Please fill both password and confirm password inputs");
-        return (false);
+        return false;
     }
     if (!checkPassword(passwordInput) || !checkPassword(confirmPasswordInput)) {
         setErrorAlert(true, "Password missing");
-        return (false);
+        return false;
     }
     if (!checkPasswordMatch(passwordInput, confirmPasswordInput)) {
         setErrorAlert(true, "Passwords must match");
-        return (false);
+        return false;
     }
-    return (true);
+    return true;
 }
 
 async function submitForm(form) {
     if (form.preventDefault)
-    form.preventDefault();
+        form.preventDefault();
     const formData = new FormData(form.target);
     const data = Object.fromEntries(formData.entries());
     const email = data.email;
     const password = data.password;
     const confirmPassword = data.confirmpassword;
     if (!checkAllInputs(email, password, confirmPassword))
-        return (false);
+        return false;
 
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     if (!id || !token) {
         setErrorAlert(true, "Please reopen this window and login");
-        return (true);
+        return true;
     }
 
     const payload = { "email": email };
     if (password !== "")
         payload.password = password;
 
-    let request = initRequest("PUT", `${mouliBotApiUrl}/id/${id}`, payload, token);
+    let request = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
     request.onload = () => {
         if (request.status === 200) {
             window.location.href = "./home.html";
@@ -54,7 +54,7 @@ async function submitForm(form) {
             setErrorAlert(true, "Unable to modify your account");
         }
     };
-    return (true);
+    return true;
 }
 
 function deleteAccount() {
@@ -64,7 +64,7 @@ function deleteAccount() {
         setErrorAlert(true, "Please reopen this window and login");
     }
     if (confirm("Do you really want to delete your account?")) {
-        let request = initRequest("DELETE", `${mouliBotApiUrl}/id/${id}`, {}, token);
+        let request = initRequest("DELETE", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
         request.onload = () => {
             if (request.status === 200) {
                 alert("Account deleted");
@@ -89,10 +89,14 @@ window.onload = () => {
     }
     document.getElementById("deleteAccountBtn").addEventListener("click", deleteAccount);
     document.getElementById("alertMessage").addEventListener("click", closeAlert);
+    document.getElementById("cancelBtn").addEventListener("click", () => {
+        window.location.href = "./home.html";
+    });
+
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     if (!id || !token) {
-        // window.location.href = './SignIn.html';
+        window.location.href = './SignIn.html';
         return;
     }
     let request = initRequest("GET", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
