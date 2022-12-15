@@ -45,14 +45,20 @@ async function submitForm(form) {
     const payload = { "email": email };
     if (password !== "")
         payload.password = password;
-
-    let request = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
-    request.onload = () => {
-        if (request.status === 200) {
-            window.location.href = "./home.html";
-        } else {
+    let requestApi = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
+    requestApi.onload = () => {
+        if (requestApi.status === 200) {
+            const oldEmail = localStorage.getItem(localStorageEmail);
+            let requestRelay = initRequest("GET", `${mouliBotRelayUrl}/account/change/${id}/${oldEmail}/${email}`, {}, token);
+            requestRelay.onload = () => {
+                if (requestRelay.status === 200) {
+                    localStorage.setItem(localStorageEmail, email);
+                    window.location.href = "./home.html";
+                } else
+                    setErrorAlert(true, "Unable to modify your account");
+            };
+        } else
             setErrorAlert(true, "Unable to modify your account");
-        }
     };
     return true;
 }
@@ -64,7 +70,7 @@ function deleteAccount() {
     if (!id || !token || !email)
         setErrorAlert(true, "Please reopen this window and login");
     if (confirm("Do you really want to delete your account?")) {
-        let requestApi = initRequest("DELETE", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
+        let requestApi = initRequest("DELETE", `${mouliBotApiUrl}/user/id/1`, {}, token);
         requestApi.onload = () => {
             if (requestApi.status === 200) {
                 let requestRelay = initRequest("DELETE", `${mouliBotRelayUrl}/account/delete/${email}`, {}, token);
@@ -95,11 +101,10 @@ window.onload = () => {
     else
         form.addEventListener("submit", submitForm);
     document.getElementById("deleteAccountBtn").addEventListener("click", deleteAccount);
-    // document.getElementById("alertMessage").addEventListener("click", closeAlert); // TODO check
+    document.getElementById("alertMessage").addEventListener("click", closeAlert);
     document.getElementById("cancelBtn").addEventListener("click", () => {
         window.location.href = "./home.html";
     });
-
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     const email = localStorage.getItem(localStorageEmail);
@@ -107,12 +112,5 @@ window.onload = () => {
         window.location.href = './SignIn.html';
         return;
     }
-    // let request = initRequest("GET", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
-    // request.onload = () => {
-    //     if (request.status === 200) {
-    //         const resBody = JSON.parse(request.response);
     setInputText('emailInput', email);
-        // } else
-        //     console.log(`Error ${request.status}: ${request.responseText}`); // TODO alert error
-    // };
 }

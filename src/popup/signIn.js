@@ -19,7 +19,7 @@ function submitForm(form) {
             console.log(rspJson)
             localStorage.setItem(localStorageTokenName, rspJson.token);
             localStorage.setItem(localStorageIdName, rspJson.id);
-            localStorage.setItem(localStorageEmail, rspJson.email);
+            localStorage.setItem(localStorageEmail, email);
             window.location.href = "./home.html";
         } else
             setErrorAlert(true, "Invalid credentials")
