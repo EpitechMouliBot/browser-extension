@@ -1,6 +1,8 @@
 export const localStorageTokenName = "mouliBotAccountToken";
 export const localStorageIdName = "mouliBotAccountId";
+export const localStorageEmail = "mouliBotAccountEmail";
 export const mouliBotApiUrl = "http://127.0.0.1:3000";
+export const mouliBotRelayUrl = "http://127.0.0.1:8090";
 import { setErrorAlert } from "./alert.js"
 
 export function checkEmail(email) {
@@ -8,7 +10,7 @@ export function checkEmail(email) {
 }
 
 export function checkPassword(password) {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,100})/.test(password)
 }
 
 export function checkPasswordMatch(password, confirmPassword) {
