@@ -1,4 +1,4 @@
-import { localStorageIdName, localStorageTokenName, localStorageEmail, initRequest, mouliBotApiUrl, mouliBotRelayUrl } from "./utils.js"
+import { localStorageIdName, localStorageTokenName, localStorageEmail, initRequest, mouliBotApiUrl } from "./utils.js"
 import { checkEmail, checkPassword, checkPasswordMatch } from "./utils.js"
 import { setErrorAlert, closeAlert } from "./alert.js"
 
@@ -41,22 +41,15 @@ async function submitForm(form) {
         setErrorAlert(true, "Please reopen this window and login");
         return true;
     }
-
     const payload = { "email": email };
     if (password !== "")
         payload.password = password;
+
     let requestApi = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
     requestApi.onload = () => {
         if (requestApi.status === 200) {
-            const oldEmail = localStorage.getItem(localStorageEmail);
-            let requestRelay = initRequest("GET", `${mouliBotRelayUrl}/account/change/${id}/${oldEmail}/${email}`, {}, token);
-            requestRelay.onload = () => {
-                if (requestRelay.status === 200) {
-                    localStorage.setItem(localStorageEmail, email);
-                    window.location.href = "./home.html";
-                } else
-                    setErrorAlert(true, "Unable to modify your account");
-            };
+            localStorage.setItem(localStorageEmail, email);
+            window.location.href = "./home.html";
         } else
             setErrorAlert(true, "Unable to modify your account");
     };
@@ -70,20 +63,14 @@ function deleteAccount() {
     if (!id || !token || !email)
         setErrorAlert(true, "Please reopen this window and login");
     if (confirm("Do you really want to delete your account?")) {
-        let requestApi = initRequest("DELETE", `${mouliBotApiUrl}/user/id/1`, {}, token);
+        let requestApi = initRequest("DELETE", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
         requestApi.onload = () => {
             if (requestApi.status === 200) {
-                let requestRelay = initRequest("DELETE", `${mouliBotRelayUrl}/account/delete/${email}`, {}, token);
-                requestRelay.onload = () => {
-                    if (requestRelay.status === 200) {
-                        alert("Account deleted");
-                        localStorage.removeItem(localStorageTokenName);
-                        localStorage.removeItem(localStorageIdName);
-                        localStorage.removeItem(localStorageEmail);
-                        window.location.href = "./SignUp.html";
-                    } else
-                        setErrorAlert(true, "Unable to delete your account, please retry later");
-                };
+                alert("Account deleted");
+                localStorage.removeItem(localStorageTokenName);
+                localStorage.removeItem(localStorageIdName);
+                localStorage.removeItem(localStorageEmail);
+                window.location.href = "./SignUp.html";
             } else
                 setErrorAlert(true, "Unable to delete your account, please retry later");
         };

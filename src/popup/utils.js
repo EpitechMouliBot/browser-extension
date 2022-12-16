@@ -2,7 +2,6 @@ export const localStorageTokenName = "mouliBotAccountToken";
 export const localStorageIdName = "mouliBotAccountId";
 export const localStorageEmail = "mouliBotAccountEmail";
 export const mouliBotApiUrl = "http://127.0.0.1:3000";
-export const mouliBotRelayUrl = "http://127.0.0.1:8090";
 import { setErrorAlert } from "./alert.js"
 
 export function checkEmail(email) {
