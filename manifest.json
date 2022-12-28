@@ -8,7 +8,7 @@
         "cookies"
     ],
     "host_permissions": [
-        "https://my.epitech.eu/*"
+        "<all_urls>"
     ],
     "background": {
         "service_worker": "src/background.js"
