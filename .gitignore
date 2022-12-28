@@ -54,3 +54,4 @@ dkms.conf
 # Mine
 cookies*.json
 backup*
+*.xcf

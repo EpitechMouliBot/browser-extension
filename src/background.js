@@ -1,4 +1,4 @@
-function getHost (param) {
+function getHost(param) {
     if (param.toString().match(/http(s?):\/\//)) {
         let url = new URL(param);
         url = url.host.replace('www.', '');
@@ -11,21 +11,21 @@ function getHost (param) {
     }
 }
 
-function getCookiesForURL(url) {
+function getCookiesForEpitech() {
     return new Promise((resolve) => {
         chrome.cookies.getAll({}, (cookies) => {
             resolve(cookies.filter((cookie) => {
-                return (cookie.domain.indexOf(getHost(url)) !== -1) || (cookie.domain.indexOf("microsoftonline.com") !== -1) || (cookie.domain.indexOf("live.com") !== -1);
+                return (cookie.domain.indexOf("epitech.eu") !== -1) || (cookie.domain.indexOf("microsoftonline.com") !== -1) || (cookie.domain.indexOf("live.com") !== -1);
             }));
         });
     });
 };
 
 chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { type, url } = obj;
+    const { type } = obj;
 
     if (type === "GET_COOKIES") {
-        getCookiesForURL(url).then((data) => {
+        getCookiesForEpitech().then((data) => {
             response({ response: data });
         });
         return true;
