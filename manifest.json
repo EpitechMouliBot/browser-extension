@@ -3,7 +3,6 @@
     "description": "Extension for Epitech Mouli Bot",
     "version": "1.0.0",
     "permissions": [
-        "storage",
         "tabs",
         "cookies"
     ],
