@@ -1,6 +1,6 @@
 export const localStorageTokenName = "mouliBotAccountToken";
 export const localStorageIdName = "mouliBotAccountId";
-export const mouliBotApiUrl = "http://127.0.0.1:3000";
+export const mouliBotApiUrl = "http://rpi.redboard.fr:3000";
 import { setErrorAlert } from "./alert.js"
 
 export function checkEmail(email) {
@@ -28,11 +28,10 @@ export async function getCurrentTab() {
     return tab;
 }
 
-export function getCookies(activeTabUrl) {
+export function getCookies() {
     return new Promise((resolve, reject) => {
         chrome.runtime.sendMessage({
-            type: "GET_COOKIES",
-            url: activeTabUrl
+            type: "GET_COOKIES"
         }).then((response) => {
             resolve(response.response);
         }).catch((error) => {

@@ -8,8 +8,7 @@ async function reloadCookies() {
         setErrorAlert(true, "Please reopen this window and login");
         return;
     }
-    const activeTab = await getCurrentTab();
-    getCookies(activeTab.url).then((cookiesData) => {
+    getCookies().then((cookiesData) => {
         let request = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, {
             "cookies": JSON.stringify(cookiesData)
         }, token);
