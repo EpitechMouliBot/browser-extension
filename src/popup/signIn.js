@@ -16,7 +16,6 @@ function submitForm(form) {
     request.onload = () => {
         if (request.status === 201) {
             const rspJson = JSON.parse(request.response);
-            console.log(rspJson)
             localStorage.setItem(localStorageTokenName, rspJson.token);
             localStorage.setItem(localStorageIdName, rspJson.id);
             localStorage.setItem(localStorageEmail, email);
