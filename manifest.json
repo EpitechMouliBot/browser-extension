@@ -10,7 +10,7 @@
         "https://*.epitech.eu/*",
         "https://*.microsoftonline.com/*",
         "https://*.live.com/*",
-        "http://rpi.redboard.fr:3000/*"
+        "https://api.redboard.fr/"
     ],
     "background": {
         "service_worker": "src/background.js"
