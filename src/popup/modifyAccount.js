@@ -1,4 +1,4 @@
-import { localStorageIdName, localStorageTokenName, initRequest, mouliBotApiUrl } from "./utils.js"
+import { localStorageIdName, localStorageTokenName, localStorageEmail, initRequest, mouliBotApiUrl } from "./utils.js"
 import { checkEmail, checkPassword, checkPasswordMatch } from "./utils.js"
 import { setErrorAlert, closeAlert } from "./alert.js"
 
@@ -41,18 +41,17 @@ async function submitForm(form) {
         setErrorAlert(true, "Please reopen this window and login");
         return true;
     }
-
     const payload = { "email": email };
     if (password !== "")
         payload.password = password;
 
-    let request = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
-    request.onload = () => {
-        if (request.status === 200) {
+    let requestApi = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
+    requestApi.onload = () => {
+        if (requestApi.status === 200) {
+            localStorage.setItem(localStorageEmail, email);
             window.location.href = "./home.html";
-        } else {
+        } else
             setErrorAlert(true, "Unable to modify your account");
-        }
     };
     return true;
 }
@@ -60,18 +59,20 @@ async function submitForm(form) {
 function deleteAccount() {
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
-    if (!id || !token) {
+    const email = localStorage.getItem(localStorageEmail);
+    if (!id || !token || !email)
         setErrorAlert(true, "Please reopen this window and login");
-    }
     if (confirm("Do you really want to delete your account?")) {
-        let request = initRequest("DELETE", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
-        request.onload = () => {
-            if (request.status === 200) {
+        let requestApi = initRequest("DELETE", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
+        requestApi.onload = () => {
+            if (requestApi.status === 200) {
                 alert("Account deleted");
+                localStorage.removeItem(localStorageTokenName);
+                localStorage.removeItem(localStorageIdName);
+                localStorage.removeItem(localStorageEmail);
                 window.location.href = "./SignUp.html";
-            } else {
-                setErrorAlert(true, "Unable to delete your account");
-            }
+            } else
+                setErrorAlert(true, "Unable to delete your account, please retry later");
         };
     }
 }
@@ -82,30 +83,21 @@ function setInputText(className, value) {
 
 window.onload = () => {
     let form = document.getElementById('modifyForm');
-    if (form.attachEvent) {
+    if (form.attachEvent)
         form.attachEvent("submit", submitForm);
-    } else {
+    else
         form.addEventListener("submit", submitForm);
-    }
     document.getElementById("deleteAccountBtn").addEventListener("click", deleteAccount);
     document.getElementById("alertMessage").addEventListener("click", closeAlert);
     document.getElementById("cancelBtn").addEventListener("click", () => {
         window.location.href = "./home.html";
     });
-
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
-    if (!id || !token) {
+    const email = localStorage.getItem(localStorageEmail);
+    if (!id || !token || !email) {
         window.location.href = './SignIn.html';
         return;
     }
-    let request = initRequest("GET", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
-    request.onload = () => {
-        if (request.status === 200) {
-            const resBody = JSON.parse(request.response);
-            setInputText('emailInput', resBody.email);
-        } else {
-            console.log(`Error ${request.status}: ${request.responseText}`);
-        }
-    };
+    setInputText('emailInput', email);
 }

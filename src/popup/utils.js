@@ -1,5 +1,6 @@
 export const localStorageTokenName = "mouliBotAccountToken";
 export const localStorageIdName = "mouliBotAccountId";
+export const localStorageEmail = "mouliBotAccountEmail";
 export const mouliBotApiUrl = "http://rpi.redboard.fr:3000";
 import { setErrorAlert } from "./alert.js"
 
@@ -8,7 +9,7 @@ export function checkEmail(email) {
 }
 
 export function checkPassword(password) {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,100})/.test(password)
 }
 
 export function checkPasswordMatch(password, confirmPassword) {

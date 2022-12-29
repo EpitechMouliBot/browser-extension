@@ -1,4 +1,4 @@
-import { getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl } from "./utils.js"
+import { getCookies, getCurrentTab, initRequest, localStorageIdName, localStorageTokenName, localStorageEmail, mouliBotApiUrl } from "./utils.js"
 import { checkEmail, checkPassword, checkPasswordMatch } from "./utils.js"
 import { setErrorAlert, closeAlert } from "./alert.js"
 
@@ -45,6 +45,7 @@ async function submitForm(form) {
             if (request.status === 201) {
                 localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
                 localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
+                localStorage.setItem(localStorageEmail, email);
                 window.location.href = "./home.html";
             } else {
                 setErrorAlert(true, "Account already exist")

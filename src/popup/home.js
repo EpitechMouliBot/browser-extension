@@ -1,4 +1,4 @@
-import { localStorageIdName, localStorageTokenName, initRequest, mouliBotApiUrl, getCookies, getCurrentTab } from "./utils.js"
+import { localStorageIdName, localStorageTokenName, localStorageEmail, initRequest, mouliBotApiUrl, getCookies, getCurrentTab } from "./utils.js"
 import { setErrorAlert, setSuccessAlert, closeAlert } from "./alert.js"
 
 async function reloadCookies() {
@@ -25,8 +25,9 @@ async function reloadCookies() {
 }
 
 function logOut() {
-    localStorage.removeItem(localStorageIdName);
     localStorage.removeItem(localStorageTokenName);
+    localStorage.removeItem(localStorageIdName);
+    localStorage.removeItem(localStorageEmail);
     window.location.href = "./popup.html";
 }
 

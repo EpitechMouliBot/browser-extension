@@ -1,4 +1,4 @@
-import { initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl } from "./utils.js"
+import { initRequest, localStorageIdName, localStorageTokenName, mouliBotApiUrl, localStorageEmail } from "./utils.js"
 import { setErrorAlert, closeAlert } from "./alert.js"
 
 function submitForm(form) {
@@ -15,8 +15,10 @@ function submitForm(form) {
     });
     request.onload = () => {
         if (request.status === 201) {
-            localStorage.setItem(localStorageTokenName, JSON.parse(request.response).token);
-            localStorage.setItem(localStorageIdName, JSON.parse(request.response).id);
+            const rspJson = JSON.parse(request.response);
+            localStorage.setItem(localStorageTokenName, rspJson.token);
+            localStorage.setItem(localStorageIdName, rspJson.id);
+            localStorage.setItem(localStorageEmail, email);
             window.location.href = "./home.html";
         } else
             setErrorAlert(true, "Invalid credentials")
