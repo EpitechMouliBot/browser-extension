@@ -1,7 +1,7 @@
 {
     "name": "Epitech Mouli Bot",
     "description": "Extension for Epitech Mouli Bot",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "permissions": [
         "tabs",
         "cookies"
