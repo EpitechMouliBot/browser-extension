@@ -3,12 +3,14 @@
     "description": "Extension for Epitech Mouli Bot",
     "version": "1.0.0",
     "permissions": [
-        "storage",
         "tabs",
         "cookies"
     ],
     "host_permissions": [
-        "<all_urls>"
+        "https://*.epitech.eu/*",
+        "https://*.microsoftonline.com/*",
+        "https://*.live.com/*",
+        "http://rpi.redboard.fr:3000/*"
     ],
     "background": {
         "service_worker": "src/background.js"

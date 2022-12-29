@@ -29,11 +29,10 @@ export async function getCurrentTab() {
     return tab;
 }
 
-export function getCookies(activeTabUrl) {
+export function getCookies() {
     return new Promise((resolve, reject) => {
         chrome.runtime.sendMessage({
-            type: "GET_COOKIES",
-            url: activeTabUrl
+            type: "GET_COOKIES"
         }).then((response) => {
             resolve(response.response);
         }).catch((error) => {

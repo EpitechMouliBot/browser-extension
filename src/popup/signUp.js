@@ -35,8 +35,7 @@ async function submitForm(form) {
     if (checkAllInputs(email, password, confirmPassword) === false)
         return (false);
 
-    const activeTab = await getCurrentTab();
-    getCookies(activeTab.url).then((cookiesData) => {
+    getCookies().then((cookiesData) => {
         let request = initRequest("POST", `${mouliBotApiUrl}/register`, {
             "email": email,
             "password": password,
