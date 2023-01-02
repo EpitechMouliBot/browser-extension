@@ -5,6 +5,7 @@
         <script type="module" src="./modifyAccount.js"></script>
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="stylesheet" href="../../assets/css/buttons.css">
+        <link rel="stylesheet" href="../../assets/css/modifyAccount.css">
         <title>MyAccount</title>
     </head>
     <body id="backgroundModifyAccount">
@@ -14,13 +15,11 @@
                 <input type="password" name="password" id="passwordInput" class="buttonInput" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8-100 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Password">
                 <input type="password" name="confirmpassword" id="confirmPasswordInput" class="buttonInput" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,100}$" title="Password must contain at least: 8 characters, 1 capital letter, 1 small letter, 1 number and 1 special character in !@#$%^&*" placeholder="Confirm password">
 
-                <input type="submit" value="Ok" id="submitBtn">
+                <input id="submitBtn" class="modifyAccount" type="submit" value="Submit">
             </form>
             <button id="cancelBtn">Cancel</button>
-
             <p>💡 To change your discord id, type /login in discord with the discord account you want to link</p>
             <button id="deleteAccountBtn" title="Completely delete your account">Delete account</button>
-
             <div id="alertImage" class="hidden"></div>
             <p id="alertMessage" class="hidden"></p>
         </div>
