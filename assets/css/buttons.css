@@ -32,7 +32,7 @@
     top: 84%;
 }
 
-#submitBtn:hover, #cancelBtn:hover {
+#submitBtn:hover, #cancelBtn:hover, #deleteAccountBtn:hover {
 	background: linear-gradient(to top left, #0049ff 0%, #0079ff 100%);
 }
 

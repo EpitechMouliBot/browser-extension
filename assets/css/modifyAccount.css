@@ -45,3 +45,28 @@
     top: 59.4%;
     outline: none;
 }
+
+#deleteAccountBtn {
+    background-color:#0049ff;
+	border-radius:11px;
+	cursor:pointer;
+	color:#ffffff;
+	padding:3px 30px;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+    position: absolute;
+    left: 5%;
+    top: 3%;
+}
+
+#deleteAccountBtn:active {
+    top:84.4%;
+}
+
+#helpMessage {
+    position: absolute;
+    left: 0%;
+    top: 95%;
+}
