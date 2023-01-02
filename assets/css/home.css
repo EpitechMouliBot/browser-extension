@@ -47,3 +47,11 @@
     left: 64%;
     top: 74%;
 }
+
+#reloadCookiesBtn {
+    cursor:pointer;
+    position: absolute;
+    width: 12%;
+    left: 18%;
+    top: 72%;
+}

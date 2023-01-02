@@ -13,6 +13,10 @@
     top: 80%;
 }
 
+#submitBtn:active {
+    top:80.4%;
+}
+
 #cancelBtn {
     background-color:#0049ff;
 	border-radius:11px;
@@ -25,15 +29,11 @@
 	text-decoration:none;
     position: absolute;
     left: 13%;
-    top: 80%;
+    top: 84%;
 }
 
-#submitBtn:hover, #cancelBtn:hover {
+#submitBtn:hover, #cancelBtn:hover, #deleteAccountBtn:hover {
 	background: linear-gradient(to top left, #0049ff 0%, #0079ff 100%);
-}
-
-#submitBtn:active {
-	top:80.4%;
 }
 
 #emailInput {

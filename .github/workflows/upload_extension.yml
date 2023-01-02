@@ -1,27 +1,27 @@
-# name: upload_extension
+name: upload_extension
 
-# on:
-#   release:
-#     types: [released]
+on:
+  release:
+    types: [released]
 
-# jobs:
-#   upload_extension:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Download release
-#         uses: robinraju/release-downloader@v1.7
-#         with:
-#           tag: ${{ github.event.release.tag_name }}
-#           out-file-path: "./"
-#           zipBall: true
-#       - name: Rename
-#         run: |
-#           mv *.zip result.zip
-#       - name: Upload extension to Chrome Web Store
-#         uses: mnao305/chrome-extension-upload@v4.0.0
-#         with:
-#           file-path: ./result.zip
-#           extension-id: ${{ secrets.EXTENSION_ID }}
-#           client-id: ${{ secrets.CHROME_API_CLIENT_ID }}
-#           client-secret: ${{ secrets.CHROME_API_CLIENT_SECRET }}
-#           refresh-token: ${{ secrets.CHROME_API_REFRESH_TOKEN }}
+jobs:
+  upload_extension:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download release
+        uses: robinraju/release-downloader@v1.7
+        with:
+          tag: ${{ github.event.release.tag_name }}
+          out-file-path: "./"
+          zipBall: true
+      - name: Rename
+        run: |
+          mv *.zip result.zip
+      - name: Upload extension to Chrome Web Store
+        uses: mnao305/chrome-extension-upload@v4.0.0
+        with:
+          file-path: ./result.zip
+          extension-id: ${{ secrets.EXTENSION_ID }}
+          client-id: ${{ secrets.CHROME_API_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_API_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_API_REFRESH_TOKEN }}

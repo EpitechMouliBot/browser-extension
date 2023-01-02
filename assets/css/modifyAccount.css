@@ -1,0 +1,72 @@
+#submitBtn.modifyAccount {
+    top: 84%;
+    left: 60%;
+}
+
+#submitBtn.modifyAccount:active {
+	top:84.4%;
+}
+
+#passwordInput_ma {
+    width: 63%;
+    position: absolute;
+    left: 8%;
+    top: 71%;
+    outline: none;
+}
+
+#passwordInput_ma.buttonInputSignUp {
+    width: 22.4%;
+    background: transparent;
+    border: none;
+	border-radius:11px;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:16px;
+	padding:7px 42px;
+}
+
+#confirmPasswordInput_ma {
+    width: 20%;
+    position: absolute;
+    left: 48.4%;
+    top: 71%;
+    outline: none;
+}
+
+#confirmPasswordInput_ma::placeholder {
+    width: max-content;
+}
+
+#emailInput_ma {
+    width: 63%;
+    position: absolute;
+    left: 8%;
+    top: 59.4%;
+    outline: none;
+}
+
+#deleteAccountBtn {
+    background-color:#0049ff;
+	border-radius:11px;
+	cursor:pointer;
+	color:#ffffff;
+	padding:3px 30px;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+    position: absolute;
+    left: 5%;
+    top: 3%;
+}
+
+#deleteAccountBtn:active {
+    top:84.4%;
+}
+
+#helpMessage {
+    position: absolute;
+    left: 0%;
+    top: 95%;
+}
