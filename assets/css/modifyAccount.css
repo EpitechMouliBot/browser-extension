@@ -6,3 +6,42 @@
 #submitBtn.modifyAccount:active {
 	top:84.4%;
 }
+
+#passwordInput_ma {
+    width: 63%;
+    position: absolute;
+    left: 8%;
+    top: 71%;
+    outline: none;
+}
+
+#passwordInput_ma.buttonInputSignUp {
+    width: 22.4%;
+    background: transparent;
+    border: none;
+	border-radius:11px;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:16px;
+	padding:7px 42px;
+}
+
+#confirmPasswordInput_ma {
+    width: 20%;
+    position: absolute;
+    left: 48.4%;
+    top: 71%;
+    outline: none;
+}
+
+#confirmPasswordInput_ma::placeholder {
+    width: max-content;
+}
+
+#emailInput_ma {
+    width: 63%;
+    position: absolute;
+    left: 8%;
+    top: 59.4%;
+    outline: none;
+}
