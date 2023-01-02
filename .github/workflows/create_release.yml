@@ -1,0 +1,29 @@
+name: create_release
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: 'manifest.json'
+          prop_path: 'version'
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Changelog: https://github.com/${{ github.repository }}/commits/${{ steps.version.outputs.prop }}"
+          tag: ${{ steps.version.outputs.prop }}
+          token: ${{ secrets.BROWSER_EXTENSION_TOKEN }}
+          allowUpdates: true
+          replacesArtifacts: true
