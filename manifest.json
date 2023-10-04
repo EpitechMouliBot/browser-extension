@@ -10,7 +10,7 @@
         "https://*.epitech.eu/*",
         "https://*.microsoftonline.com/*",
         "https://*.live.com/*",
-        "https://api.redboard.fr/*"
+        "https://epitechmoulibot.thomasott.fr/*"
     ],
     "background": {
         "service_worker": "src/background.js"
