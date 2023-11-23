@@ -9,7 +9,7 @@ async function reloadCookies() {
         return;
     }
     getCookies().then((cookiesData) => {
-        let request = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, {
+        let request = initRequest("PUT", `${mouliBotApiUrl}/user/${id}`, {
             "cookies": JSON.stringify(cookiesData)
         }, token);
         request.onload = () => {
@@ -68,7 +68,7 @@ window.onload = () => {
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     if (token && id) {
-        let request = initRequest("GET", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
+        let request = initRequest("GET", `${mouliBotApiUrl}/user/${id}`, {}, token);
         request.onload = () => {
             if (request.status === 200) {
                 const resBody = JSON.parse(request.response);

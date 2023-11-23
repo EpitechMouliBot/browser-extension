@@ -10,7 +10,8 @@
         "https://*.epitech.eu/*",
         "https://*.microsoftonline.com/*",
         "https://*.live.com/*",
-        "https://epitechmoulibot.thomasott.fr/*"
+        "https://epitechmoulibot.thomasott.fr/*",
+        "http://127.0.0.1/*"
     ],
     "background": {
         "service_worker": "src/background.js"

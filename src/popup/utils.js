@@ -1,6 +1,6 @@
-export const localStorageTokenName = "mouliBotAccountToken";
-export const localStorageIdName = "mouliBotAccountId";
-export const localStorageEmail = "mouliBotAccountEmail";
+export const localStorageTokenName = "auth_token";
+export const localStorageIdName = "account_id";
+export const localStorageEmail = "account_email";
 export const mouliBotApiUrl = "https://epitechmoulibot.thomasott.fr/api";
 import { setErrorAlert } from "./alert.js"
 
@@ -9,7 +9,7 @@ export function checkEmail(email) {
 }
 
 export function checkPassword(password) {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,100})/.test(password)
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*\/])(?=.{8,})/.test(password)
 }
 
 export function checkPasswordMatch(password, confirmPassword) {

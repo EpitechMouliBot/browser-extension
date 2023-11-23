@@ -4,7 +4,7 @@ async function checkValidToken() {
     let token = localStorage.getItem(localStorageTokenName);
     let id = localStorage.getItem(localStorageIdName);
     if (token && id) {
-        let request = await makeGetRequest(`${mouliBotApiUrl}/user/id/${id}`, token);
+        let request = await makeGetRequest(`${mouliBotApiUrl}/user/${id}`, token);
         if (request && request.status === 200)
             return (true);
         else
