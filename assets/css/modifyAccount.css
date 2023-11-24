@@ -4,7 +4,7 @@
 }
 
 #submitBtn.modifyAccount:active {
-	top:84.4%;
+    top: 84.4%;
 }
 
 #passwordInput_ma {
@@ -19,11 +19,11 @@
     width: 22.4%;
     background: transparent;
     border: none;
-	border-radius:11px;
-	cursor:pointer;
-	font-family:Arial;
-	font-size:16px;
-	padding:7px 42px;
+    border-radius: 11px;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 7px 42px;
 }
 
 #confirmPasswordInput_ma {
@@ -47,22 +47,24 @@
 }
 
 #deleteAccountBtn {
-    background-color:#0049ff;
-	border-radius:11px;
-	cursor:pointer;
-	color:#ffffff;
-	padding:3px 30px;
-	font-family:Arial;
-	font-size:16px;
-	font-weight:bold;
-	text-decoration:none;
-    position: absolute;
-    left: 5%;
-    top: 3%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #001f3f;
+    font-family: Arial;
+    font-size: 36px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#deleteAccountBtn:hover {
+    color: #003366;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
 #deleteAccountBtn:active {
-    top:84.4%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 #helpMessage {

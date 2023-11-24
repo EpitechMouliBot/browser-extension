@@ -1,7 +1,8 @@
 export const localStorageTokenName = "auth_token";
 export const localStorageIdName = "account_id";
 export const localStorageEmail = "account_email";
-export const mouliBotApiUrl = "https://epitechmoulibot.thomasott.fr/api";
+// export const mouliBotApiUrl = "https://epitechmoulibot.thomasott.fr/api";
+export const mouliBotApiUrl = "http://127.0.0.1:3500/api";
 import { setErrorAlert } from "./alert.js"
 
 export function checkEmail(email) {
