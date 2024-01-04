@@ -5,21 +5,23 @@ import { setErrorAlert, closeAlert } from "./alert.js"
 function checkAllInputs(emailInput, passwordInput, confirmPasswordInput) {
     const cguInput = document.getElementById('acceptCGU')
 
+    if (!passwordInput || !confirmPasswordInput || !emailInput)
+        return false;
     if (!checkEmail(emailInput)) {
         setErrorAlert(true, "Email missing");
-        return (false);
+        return false;
     }
     if (!checkPassword(passwordInput) || !checkPassword(confirmPasswordInput)) {
         setErrorAlert(true, "Password missing");
-        return (false);
+        return false;
     }
     if (!checkPasswordMatch(passwordInput, confirmPasswordInput)) {
         setErrorAlert(true, "Passwords must match");
-        return (false);
+        return false;
     }
     if (!cguInput.checked) {
         setErrorAlert(true, "CGU not accepted");
-        return (false);
+        return false;
     }
     return (true);
 }
@@ -36,7 +38,7 @@ async function submitForm(form) {
         return (false);
 
     getCookies().then((cookiesData) => {
-        let request = initRequest("POST", `${mouliBotApiUrl}/register`, {
+        let request = initRequest("POST", `${mouliBotApiUrl}/auth/register`, {
             "email": email,
             "password": password,
             "cookies": JSON.stringify(cookiesData)

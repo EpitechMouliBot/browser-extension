@@ -9,7 +9,7 @@ function submitForm(form) {
     const email = data.email;
     const password = data.password;
 
-    let request = initRequest("POST", `${mouliBotApiUrl}/login`, {
+    let request = initRequest("POST", `${mouliBotApiUrl}/auth/login`, {
         "email": email,
         "password": password
     });

@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <script type="module" src="./home.js"></script>
-        <link rel="stylesheet" href="../../assets/css/style.css">
-        <link rel="stylesheet" href="../../assets/css/buttons.css">
-        <link rel="stylesheet" href="../../assets/css/home.css">
-        <title>MyAccount</title>
-    </head>
-    <body id="backgroundHome">
-        <div id="conteneur">
-            <div id="caseEmail"></div>
-            <div id="caseDiscordID"></div>
-            <div id="caseDateAccount"></div>
-            <div id="caseDiscordStatus"></div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="./home.js"></script>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/buttons.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>MyAccount</title>
+</head>
+
+<body id="backgroundHome">
+    <div id="conteneur">
+        <div id="caseEmail"></div>
+        <div id="caseNtfyTopic"></div>
+        <div class="check-group">
+            <label class="checkbox"><input type='checkbox' id = 'checkboxDiscord' name='checkboxDiscord' value='1' checked /> Discord disponible le 08/01 au plus tard
+                <span></span></label>
+            <label class="checkbox"><input type='checkbox' id = 'checkboxEmail' name='checkboxEmail' value='1' checked /> email
+                <span></span></label>
+            <label class="checkbox"><input type='checkbox' id = 'checkboxNtfy' name='checkboxNtfy' value='1' checked /> ntfy.sh
+                <span></span></label>
         </div>
-        <button id="modifyAccountBtn" title="Modify your account informations">Modify account</button>
-        <button id="logOutBtn">Logout</button>
-        <img id="reloadCookiesBtn" title="Send new cookies to our servers, in case the old cookies have expired" src="../../assets/image/background/my_account/cookies_reload.png">
-        <img id="cookiesStatusImg" src="../../assets/image/background/my_account/cookies_status_void.jpg">
-        <div id="alertImage" class="hidden"></div>
-        <p id="alertMessage" class="hidden"></p>
-    </body>
+    </div>
+    <button id="logOutBtn">
+        <i class="fa fa-sign-out" style="font-size:36px;color:#034dfa"></i>
+    </button>
+    <button id="modifyAccountBtn">
+        <i class="fa fa-gear" style="font-size:36px;color:#034dfa"></i>
+    </button>
+
+    <!-- <img id="reloadCookiesBtn" title="Send new cookies to our servers, in case the old cookies have expired"
+        src="../../assets/image/background/my_account/cookies_reload.png"> -->
+    <img id="cookiesStatusImg" src="../../assets/image/background/my_account/cookies_status_void.jpg">
+    <div id="alertImage" class="hidden"></div>
+    <p id="alertMessage" class="hidden"></p>
+</body>
+
 </html>

@@ -38,6 +38,7 @@ function setDivText(className, value) {
 
 function adaptiveBackground(cookies_status) {
     const basePath = '../../assets/image/background/my_account/';
+    console.log(cookies_status)
     switch (cookies_status) {
         case 'new':
             document.getElementById("cookiesStatusImg").src = `${basePath}cookies_status_orange.jpg`;
@@ -58,13 +59,48 @@ function adaptiveBackground(cookies_status) {
     }
 }
 
+function listenerCheckBox(checkboxName) {
+    const checkbox = document.querySelector(`input[name='${checkboxName}']`);
+
+    checkbox.addEventListener('click', () => {
+        const checked = checkbox.checked ? 1 : 0;
+        console.log(`${checkboxName} checkbox clicked. New value: ${checkbox.checked}`);
+
+        const token = localStorage.getItem(localStorageTokenName);
+        const id = localStorage.getItem(localStorageIdName);
+        if (!id || !token) {
+            setErrorAlert(true, "Please reopen this window and login");
+            return true;
+        }
+
+        let payload = {};
+        if (checkboxName === 'checkboxDiscord')
+            payload.discord_status = checked;
+        if (checkboxName === 'checkboxEmail')
+            payload.email_status = checked;
+        if (checkboxName === 'checkboxNtfy')
+            payload.phone_status = checked;
+        initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
+    });
+}
+
+function updateCheckbox(checkboxName, value) {
+    const checkbox = document.querySelector(`input[name='${checkboxName}']`);
+    if (checkbox) {
+        checkbox.checked = (value === 1 ? true : false);
+    }
+}
+
 window.onload = () => {
     document.getElementById("alertMessage").addEventListener("click", closeAlert);
-    document.getElementById("reloadCookiesBtn").addEventListener("click", reloadCookies);
     document.getElementById("logOutBtn").addEventListener("click", logOut);
     document.getElementById("modifyAccountBtn").addEventListener("click", () => {
         window.location.href = "./modifyAccount.html";
     });
+    listenerCheckBox('checkboxDiscord');
+    listenerCheckBox('checkboxEmail');
+    listenerCheckBox('checkboxNtfy');
+
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     if (token && id) {
@@ -74,10 +110,11 @@ window.onload = () => {
                 const resBody = JSON.parse(request.response);
                 adaptiveBackground(resBody.cookies_status);
                 setDivText('caseEmail', resBody.email);
-                setDivText('caseDiscordID', resBody.channel_id);
-                const date = new Date(resBody.created_at);
-                setDivText('caseDateAccount', date.toLocaleDateString("fr"));
-                setDivText('caseDiscordStatus', resBody.discord_status === 1 ? 'Enabled' : 'Disabled');
+                setDivText('caseNtfyTopic', resBody.phone_topic);
+
+                updateCheckbox('checkboxDiscord', resBody.discord_status);
+                updateCheckbox('checkboxEmail', resBody.email_status);
+                updateCheckbox('checkboxNtfy', resBody.phone_status);
             } else {
                 console.log(`Error ${request.status}: ${request.responseText}`);
             }
