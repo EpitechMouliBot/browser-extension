@@ -9,7 +9,7 @@ async function reloadCookies() {
         return;
     }
     getCookies().then((cookiesData) => {
-        let request = initRequest("PUT", `${mouliBotApiUrl}/user/${id}`, {
+        let request = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, {
             "cookies": JSON.stringify(cookiesData)
         }, token);
         request.onload = () => {
@@ -80,7 +80,7 @@ function listenerCheckBox(checkboxName) {
             payload.email_status = checked;
         if (checkboxName === 'checkboxNtfy')
             payload.phone_status = checked;
-        initRequest("PUT", `${mouliBotApiUrl}/user/${id}`, payload, token);
+        initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
     });
 }
 
@@ -104,7 +104,7 @@ window.onload = () => {
     const token = localStorage.getItem(localStorageTokenName);
     const id = localStorage.getItem(localStorageIdName);
     if (token && id) {
-        let request = initRequest("GET", `${mouliBotApiUrl}/user/${id}`, {}, token);
+        let request = initRequest("GET", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
         request.onload = () => {
             if (request.status === 200) {
                 const resBody = JSON.parse(request.response);

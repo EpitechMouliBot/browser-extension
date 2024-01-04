@@ -45,7 +45,7 @@ async function submitForm(form) {
     if (password !== "")
         payload.password = password;
 
-    let requestApi = initRequest("PUT", `${mouliBotApiUrl}/user/${id}`, payload, token);
+    let requestApi = initRequest("PUT", `${mouliBotApiUrl}/user/id/${id}`, payload, token);
     requestApi.onload = () => {
         if (requestApi.status === 200) {
             localStorage.setItem(localStorageEmail, email);
@@ -63,7 +63,7 @@ function deleteAccount() {
     if (!id || !token || !email)
         setErrorAlert(true, "Please reopen this window and login");
     if (confirm("Do you really want to delete your account?")) {
-        let requestApi = initRequest("DELETE", `${mouliBotApiUrl}/user/${id}`, {}, token);
+        let requestApi = initRequest("DELETE", `${mouliBotApiUrl}/user/id/${id}`, {}, token);
         requestApi.onload = () => {
             if (requestApi.status === 200) {
                 alert("Account deleted");
